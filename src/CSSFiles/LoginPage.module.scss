@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+// * {
+//   box-sizing: border-box;
+// }
+
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 4rem;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: flex;
+  background: #ffffff;
+  box-shadow: 0 0 5px #999999;
+}
+
+.login .colleft,
+.login .colright {
+  padding: 30px;
+  display: flex;
+}
+
+.login .colleft {
+  width: 60%;
+  clip-path: polygon(0 0, 0% 100%, 100% 0);
+  background: linear-gradient(
+    109.6deg,
+    rgba(61, 245, 167, 1) 11.2%,
+    rgba(9, 111, 224, 1) 91.1%
+  ); //#2aa15f;
+}
+
+.login .colright {
+  padding: 60px 30px;
+  width: 50%;
+  margin-left: -10%;
+}
+
+@media (max-width: 575px) {
+  .login .container {
+    flex-direction: column;
+    box-shadow: none;
+  }
+  .login .col-left,
+  .login .col-right {
+    width: 100%;
+    margin: 0;
+    clip-path: none;
+  }
+  .login .colright {
+    padding: 30px;
+  }
+}
+
+.login .logintext {
+  position: relative;
+  width: 100%;
+  color: #ffffff;
+}
+
+.login .logintext h2 {
+  margin: 0 0 15px 0;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.login .logintext p {
+  margin: 0 0 20px 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.login .logintext .btn {
+  display: inline-block;
+  font-family: poppins;
+  padding: 7px 20px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-radius: 30px;
+  color: #ffffff;
+  outline: none;
+  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 0 #ffffff;
+  transition: 0.3s;
+}
+
+.login .logintext .btn:hover {
+  color: #03adfc;
+  box-shadow: inset 150px 0 0 0 #ffffff;
+}
+
+.login .loginform {
+  position: relative;
+  width: 100%;
+}
+
+.login .loginform h2 {
+  margin: 0 0 15px 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.login .loginform p {
+  margin: 0 0 10px 0;
+  text-align: left;
+  color: #666666;
+  font-size: 15px;
+}
+
+.login .loginform p:last-child {
+  margin: 0;
+  padding-top: 3px;
+}
+
+.login .loginform p a {
+  color: #03adfc;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.login .loginform label {
+  display: block;
+  width: 100%;
+  margin-bottom: 2px;
+  letter-spacing: 0.5px;
+}
+
+.login .loginform p:last-child label {
+  width: 60%;
+  float: left;
+}
+
+.login .loginform label span {
+  color: #ff574e;
+  padding-left: 2px;
+}
+
+.login .loginform input {
+  display: block;
+  width: 100%;
+  height: 35px;
+  padding: 0 10px;
+  outline: none;
+  border: 1px solid #cccccc;
+  border-radius: 30px;
+}
+
+.login .loginform input:focus {
+  border-color: #ff574e;
+}
+
+.login .loginform button,
+.login .loginform input[type="submit"] {
+  display: inline-block;
+  width: 100%;
+  margin-top: 5px;
+  color: #03adfc;
+  font-size: 16px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #03adfc;
+  border-radius: 30px;
+  box-shadow: inset 0 0 0 0 #03adfc;
+  transition: 0.3s;
+}
+
+.login .loginform button:hover,
+.login .loginform input[type="submit"]:hover {
+  color: #ffffff;
+  box-shadow: inset 250px 0 0 0 #03adfc;
+}
+
+// #forgotPassword {
+//   outline: none;
+//   border: none;
+// }

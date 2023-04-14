@@ -1,0 +1,46 @@
+// .ellipsis {
+//   width: 5px;
+//   height: 5px;
+//   display: inline-block;
+//   background: lighten($dark, 25%);
+//   border-radius: 50%;
+//   animation: bounce 1.3s linear infinite;
+// }
+
+.cap {
+  // margin: 32px;
+  // flex-direction: row;
+  // right: 0;
+  // text-align: right;
+
+  .inside {
+    width: 10px;
+    height: 10px;
+    background-color: #037ffc;
+    display: inline-block;
+    margin: 1px;
+    border-radius: 50%;
+
+    &:nth-child(1) {
+      animation: bounce 1s infinite;
+    }
+    &:nth-child(2) {
+      animation: bounce 1s infinite 0.2s;
+    }
+    &:nth-child(3) {
+      animation: bounce 1s infinite 0.4s;
+    }
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

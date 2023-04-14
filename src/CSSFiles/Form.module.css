@@ -1,0 +1,249 @@
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4c4c6a;
+  border-radius: 2px;
+}
+
+.typing {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  right: 0;
+  text-align: right;
+}
+
+.chatbox {
+  width: 40vw;
+  height: 80vh;
+  max-height: 80vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+          box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+  position: relative;
+  bottom: 0;
+}
+
+.chatWindow {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  max-height: calc(100% - 60px);
+  background: #2f323b;
+  overflow: auto;
+}
+
+.chatInput {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  height: 60px;
+  background: #40434e;
+  border-top: 1px solid #2671ff;
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+          box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+}
+
+.chatInput input {
+  height: 59px;
+  line-height: 60px;
+  outline: 0 none;
+  border: none;
+  width: calc(100% - 60px);
+  color: white;
+  text-indent: 10px;
+  font-size: 12pt;
+  padding: 0;
+  background: #40434e;
+}
+
+.chatInput button {
+  float: right;
+  outline: 0 none;
+  border: none;
+  background: rgba(255, 255, 255, 0.25);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  padding: 2px 0 0 0;
+  margin: 10px;
+  -webkit-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+}
+
+.chatInput input[good] + button {
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  background: #2671ff;
+}
+
+.chatInput input[good] + button:hover {
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.chatInput input[good] + button path {
+  fill: white;
+}
+
+.msgContainer {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+.msgBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #5b5e6c;
+  padding: 10px 10px 0 10px;
+  border-radius: 0 6px 6px 0;
+  max-width: 80%;
+  width: auto;
+  float: left;
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+}
+
+.userImg {
+  display: inline-block;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background: #2671ff;
+  margin: 0 10px 10px 0;
+}
+
+.flr {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: calc(100% - 50px);
+}
+
+.messages {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+}
+
+.msg {
+  display: inline-block;
+  font-size: 11pt;
+  line-height: 13pt;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 4px 0;
+}
+
+.msg:first-of-type {
+  margin-top: 8px;
+}
+
+.timestamp {
+  color: rgba(0, 0, 0, 0.38);
+  font-size: 8pt;
+  margin-bottom: 10px;
+}
+
+.username {
+  margin-right: 3px;
+}
+
+.posttime {
+  margin-left: 3px;
+}
+
+.msgSelf .msgBox {
+  border-radius: 6px 0 0 6px;
+  background: #2671ff;
+  float: right;
+}
+
+.msgSelf .userImg {
+  margin: 0 0 10px 10px;
+}
+
+.msgSelf .msg {
+  text-align: right;
+}
+
+.msgSelf .timestamp {
+  text-align: right;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal {
+  position: fixed;
+  top: 10vh;
+  left: 5%;
+  width: 90%;
+  border-radius: 1.5rem;
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+  -webkit-animation: slide-down 300ms ease-out forwards;
+          animation: slide-down 300ms ease-out forwards;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    width: 40rem;
+    left: calc(50% - 20rem);
+  }
+}
+
+@-webkit-keyframes slide-down {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-3rem);
+            transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-3rem);
+            transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+/*# sourceMappingURL=Form.module.css.map */

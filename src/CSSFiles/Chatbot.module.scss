@@ -1,0 +1,362 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+
+$font: "Lato", sans-serif;
+
+$primary: #79c7c5;
+$secondary: #a1e2d9;
+$white: #f9ffff;
+$dark: #777777;
+
+.msgContainer {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+.chatbox {
+  position: relative;
+  left: 35%;
+  height: 75%;
+  width: 60%;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba($dark, 0.5);
+  width: 40vw;
+  height: 80vh;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topbar {
+  width: 100%;
+  height: 60px;
+  background: $white;
+  border-radius: 10px 10px 0 0;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  background: linear-gradient(to bottom left, $primary 20%, $secondary 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: 11px;
+  left: 15px;
+  p {
+    color: $white;
+    margin: 7px 12px;
+  }
+}
+
+.name {
+  position: absolute;
+  top: 22px;
+  text-transform: uppercase;
+  color: $dark;
+  font-size: 0.8em;
+  letter-spacing: 2px;
+  font-weight: 500;
+  left: 60px;
+}
+
+.icons {
+  position: absolute;
+  color: $secondary;
+  padding: 10px;
+  top: 5px;
+  right: 21px;
+  //margin: 12% auto;
+  cursor: pointer;
+  .fas {
+    padding: 5px;
+    opacity: 0.8;
+    &:hover {
+      transform: scale(1.1);
+      transition: all 0.3s ease-in;
+    }
+  }
+}
+
+.middle {
+  position: absolute;
+  background: $white;
+  width: 100%;
+  opacity: 0.85;
+  top: 60px;
+  height: 80%;
+  flex: auto;
+  max-height: calc(100% - 60px);
+  overflow: auto;
+}
+
+.incoming {
+  position: absolute;
+  // width: 50%;
+  // height: 100%;
+  display: flex;
+
+  padding: 10px 10px 0 10px;
+  border-radius: 0 6px 6px 0;
+  max-width: 80%;
+  width: auto;
+  float: left;
+  padding: 20px;
+  .bubble {
+    background: lighten($dark, 23%);
+  }
+}
+
+.typing {
+  position: absolute;
+  top: 67%;
+  left: 20px;
+  .bubble {
+    background: lighten($dark, 45%);
+    padding: 8px 13px 9px 13px;
+  }
+}
+
+.bubble {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 5px;
+  color: $white;
+  font-size: 0.7em;
+  padding: 10px 10px 10px 12px;
+  border-radius: 20px;
+
+  font-size: 11pt;
+  line-height: 13pt;
+}
+
+// .lower {
+//   margin-top: 45px;
+// }
+
+.outgoing {
+  position: absolute;
+  padding: 20px;
+  right: 0;
+  top: 15%;
+  padding: 10px 10px 0 10px;
+  border-radius: 0 6px 6px 0;
+  max-width: 80%;
+  width: auto;
+  float: left;
+  // width: 50%;
+  // height: 100%;
+  .bubble {
+    background: $primary;
+    float: right;
+  }
+}
+
+.bottombar {
+  position: absolute;
+  width: 100%;
+  height: 55px;
+  bottom: 0;
+  background: $white;
+  border-radius: 0 0 10px 10px;
+}
+
+.left {
+  left: 0px;
+}
+
+.chatinput input {
+  padding: 7px;
+  width: 74%;
+  left: 5%;
+  position: absolute;
+  border: 0;
+  top: 13px;
+  background: $white;
+  color: $primary;
+}
+
+.chatinput input::placeholder {
+  color: $secondary;
+}
+
+.chatinput input:focus {
+  color: $dark;
+  outline: 0;
+}
+
+.chatinput button {
+  position: absolute;
+  border: 0;
+  font-size: 1em;
+  color: $secondary;
+  top: 19px;
+  opacity: 0.8;
+  right: 17px;
+  cursor: pointer;
+  outline: 0;
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+    color: $primary;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal {
+  position: fixed;
+  top: 10vh;
+  left: 30%;
+  width: 40%;
+  // background-color: aqua;
+  //padding: 1rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+
+  animation: slide-down 300ms ease-out forwards;
+}
+
+@keyframes bounce {
+  30% {
+    transform: translateY(-2px);
+  }
+  60% {
+    transform: translateY(0px);
+  }
+  80% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0.5;
+  }
+}
+// .messages {
+//   position: relative;
+//   background: $white;
+//   opacity: 0.5;
+//   width: 30%;
+//   height: 70%;
+//   top: 2.5%;
+//   left: 5%;
+//   border-radius: 10px 0 0 10px;
+//   box-shadow: -5px 5px 10px rgba($dark, 0.5);
+// }
+
+/*chat messages */
+// .people {
+//   position: relative;
+//   list-style-type: none;
+//   width: 30.2%;
+//   left: -10px;
+//   top: 24.7%;
+//   line-height: 0.7em;
+//   .title {
+//     text-transform: uppercase;
+//     font-size: 0.7em;
+//     margin-left: 14px;
+//     letter-spacing: 1px;
+//     color: $dark;
+//   }
+//   .time {
+//     font-size: 0.3em;
+//     color: $dark;
+//     position: arelative;
+//     right: 10px;
+//     margin-top: 2px;
+//   }
+//   .preview {
+//     color: $primary;
+//     margin-left: 14px;
+//     font-size: 0.5em;
+//   }
+// }
+
+// .person {
+//   padding: 12px 0 12px 12px;
+//   border-bottom: 1px solid $primary;
+//   cursor: pointer;
+//   &:hover {
+//     background: $white;
+//     transition: all 0.3s ease-in-out;
+//   }
+// }
+
+// .focus {
+//   background: $white;
+//   margin-left: 1px;
+// }
+
+// .profile {
+//   position: relative;
+//   left: 16%;
+//   top: 7%;
+// }
+
+// .name2 {
+//   position: relative;
+//   top: 50px;
+//   left: 2px;
+//   text-transform: uppercase;
+//   color: $primary;
+//   font-size: 0.8em;
+//   letter-spacing: 2px;
+//   font-weight: 500;
+// }
+// .email {
+//   color: $white;
+//   font-size: 0.5em;
+//   margin-left: -30px;
+//   margin-top: 2px;
+// }
+// .menu {
+//   position: absolute;
+//   right: 10px;
+//   top: 20px;
+//   width: 10px;
+//   height: 20px;
+//   cursor: pointer;
+//   &:hover {
+//     transform: scale(1.1);
+//     transition: all 0.3s ease-in;
+//   }
+// }
+// .dots {
+//   width: 4px;
+//   height: 4px;
+//   border-radius: 50%;
+//   background-color: $primary;
+//   box-shadow: 0px 7px 0px $primary, 0px 14px 0px $primary;
+// }
+
+// .ellipsis {
+//   width: 5px;
+//   height: 5px;
+//   display: inline-block;
+//   background: lighten($dark, 25%);
+//   border-radius: 50%;
+//   animation: bounce 1.3s linear infinite;
+// }
+
+// .one {
+//   animation-delay: 0.6s;
+// }
+// .two {
+//   animation-delay: 0.5s;
+// }
+// .three {
+//   animation-delay: 0.8s;
+// }

@@ -1,17 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4c4c6a;
+  border-radius: 2px;
+}
+
 .msgContainer {
   position: relative;
   display: inline-block;
   width: 100%;
-  margin: 0 0 10px 0;
-  padding: 0;
+  overflow: hidden;
 }
 
 .chatbox {
   position: relative;
   left: 35%;
-  height: 75%;
-  width: 60%;
   border-radius: 10px;
   -webkit-box-shadow: 5px 5px 15px rgba(119, 119, 119, 0.5);
           box-shadow: 5px 5px 15px rgba(119, 119, 119, 0.5);
@@ -30,7 +37,7 @@
 
 .topbar {
   width: 100%;
-  height: 60px;
+  height: 10%;
   background: #f9ffff;
   border-radius: 10px 10px 0 0;
 }
@@ -84,69 +91,54 @@
 }
 
 .middle {
-  position: absolute;
+  position: relative;
   background: #f9ffff;
   width: 100%;
-  opacity: 0.85;
-  top: 60px;
+  opacity: 0.9;
+  top: 10%;
   height: 80%;
   -webkit-box-flex: 1;
       -ms-flex: auto;
           flex: auto;
   max-height: calc(100% - 60px);
   overflow: auto;
+  scrollbar-width: none;
+}
+
+.bubble {
+  position: relative;
+  display: inline-block;
+  color: #f9ffff;
+  font-size: 0.7em;
+  padding: 10px 10px 10px 12px;
+  border-radius: 20px;
+  font-size: 11pt;
+  line-height: 18pt;
 }
 
 .incoming {
-  position: absolute;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 10px 10px 0 10px;
+  padding: 0.2rem;
   border-radius: 0 6px 6px 0;
   max-width: 80%;
   width: auto;
   float: left;
-  padding: 20px;
 }
 
 .incoming .bubble {
   background: #b2b2b2;
 }
 
-.typing {
-  position: absolute;
-  top: 67%;
-  left: 20px;
-}
-
-.typing .bubble {
-  background: #eaeaea;
-  padding: 8px 13px 9px 13px;
-}
-
-.bubble {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 5px;
-  color: #f9ffff;
-  font-size: 0.7em;
-  padding: 10px 10px 10px 12px;
-  border-radius: 20px;
-  font-size: 11pt;
-  line-height: 13pt;
-}
-
 .outgoing {
-  position: absolute;
-  padding: 20px;
+  position: relative;
   right: 0;
-  top: 15%;
-  padding: 10px 10px 0 10px;
   border-radius: 0 6px 6px 0;
   max-width: 80%;
   width: auto;
-  float: left;
+  float: right;
 }
 
 .outgoing .bubble {
@@ -155,9 +147,9 @@
 }
 
 .bottombar {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 55px;
+  height: 10%;
   bottom: 0;
   background: #f9ffff;
   border-radius: 0 0 10px 10px;
@@ -219,6 +211,31 @@
   color: #79c7c5;
 }
 
+.dots {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #79c7c5;
+  -webkit-box-shadow: 0px 7px 0px #79c7c5, 0px 14px 0px #79c7c5;
+          box-shadow: 0px 7px 0px #79c7c5, 0px 14px 0px #79c7c5;
+}
+
+.menu {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  width: 10px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.menu:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -230,9 +247,8 @@
 
 .modal {
   position: fixed;
-  top: 10vh;
-  left: 30%;
-  width: 40%;
+  margin: auto;
+  width: 50%;
   border-radius: 1.5rem;
   -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);

@@ -21,7 +21,7 @@ const Chatbot = ({
     onFormChange(event.target.value);
   };
   const handleSubmit = (event: any) => {
-    //event.preventDefault();
+    event.preventDefault();
     onFormSubmit(userInputRef.current.value);
     userInputRef.current.value = "";
   };
@@ -37,8 +37,6 @@ const Chatbot = ({
   }, [data]);
   const formStyle = { width: "24px", height: "24px" };
   const cell = data.map((item) => {
-    //console.log(todo.key);
-    // console.log(todo?.userInput?.length);
     return (
       <div key={item.key}>
         {item?.userInput?.length && item?.userInput?.length > 0 ? (
@@ -51,7 +49,7 @@ const Chatbot = ({
           <></>
         )}
 
-        {item?.response?.length == 0 ? (
+        {item?.response?.length == 0 || !item.response ? (
           <div className={styles.typing}>
             <div className={styles.bubble}>
               <TypingAnimation />
@@ -67,7 +65,6 @@ const Chatbot = ({
       </div>
     );
   });
-  console.log(data);
   return (
     <>
       <div className={`${styles.chatbox} ${styles.modal}`}>
@@ -89,25 +86,27 @@ const Chatbot = ({
         <div className={styles.middle}>
           {/* <div className={styles.voldemort}> */}
           {cell}
-
+          <div ref={formRef}></div>
           {/* </div> */}
         </div>
         <div className={`${styles.bottombar} ${styles.chatinput}`}>
-          <div className={styles.chat}>
-            <input
-              type="text"
-              required
-              // value={userInput}
-              autoComplete="on"
-              placeholder="Type a message"
-              ref={userInputRef}
-              // style={{ textDecoration: "none" }}
-            />
+          <form onSubmit={handleSubmit}>
+            <div className={styles.chat}>
+              <input
+                type="text"
+                required
+                // value={userInput}
+                autoComplete="on"
+                placeholder="Type a message"
+                ref={userInputRef}
+                // style={{ textDecoration: "none" }}
+              />
 
-            <button onClick={handleSubmit}>
-              <FontAwesomeIcon icon={faPaperPlane} className={styles.fas} />
-            </button>
-          </div>
+              <button type="submit">
+                <FontAwesomeIcon icon={faPaperPlane} className={styles.fas} />
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </>

@@ -6,21 +6,27 @@ $primary: #79c7c5;
 $secondary: #a1e2d9;
 $white: #f9ffff;
 $dark: #777777;
-
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #4c4c6a;
+  border-radius: 2px;
+}
 .msgContainer {
   position: relative;
   display: inline-block;
   width: 100%;
-
-  margin: 0 0 10px 0;
-  padding: 0;
+  // // padding: 0;
+  // margin: 0 0.2rem 0 0.2rem;
+  overflow: hidden;
 }
 
 .chatbox {
   position: relative;
   left: 35%;
-  height: 75%;
-  width: 60%;
+
   border-radius: 10px;
   box-shadow: 5px 5px 15px rgba($dark, 0.5);
   width: 40vw;
@@ -33,7 +39,7 @@ $dark: #777777;
 
 .topbar {
   width: 100%;
-  height: 60px;
+  height: 10%;
   background: $white;
   border-radius: 10px 10px 0 0;
 }
@@ -82,71 +88,72 @@ $dark: #777777;
 }
 
 .middle {
-  position: absolute;
+  position: relative;
   background: $white;
   width: 100%;
-  opacity: 0.85;
-  top: 60px;
+  opacity: 0.9;
+  // top: 60px;
+  top: 10%;
   height: 80%;
   flex: auto;
   max-height: calc(100% - 60px);
   overflow: auto;
+  scrollbar-width: none;
 }
-
-.incoming {
-  position: absolute;
-  // width: 50%;
-  // height: 100%;
-  display: flex;
-
-  padding: 10px 10px 0 10px;
-  border-radius: 0 6px 6px 0;
-  max-width: 80%;
-  width: auto;
-  float: left;
-  padding: 20px;
-  .bubble {
-    background: lighten($dark, 23%);
-  }
-}
-
-.typing {
-  position: absolute;
-  top: 67%;
-  left: 20px;
-  .bubble {
-    background: lighten($dark, 45%);
-    padding: 8px 13px 9px 13px;
-  }
-}
-
 .bubble {
   position: relative;
   display: inline-block;
-  margin-bottom: 5px;
+  // margin-bottom: 5px;
   color: $white;
   font-size: 0.7em;
   padding: 10px 10px 10px 12px;
   border-radius: 20px;
 
   font-size: 11pt;
-  line-height: 13pt;
+  line-height: 18pt;
 }
+
+.incoming {
+  position: relative;
+  // width: 50%;
+  // height: 100%;
+  display: flex;
+
+  padding: 0.2rem;
+  border-radius: 0 6px 6px 0;
+  max-width: 80%;
+  width: auto;
+  float: left;
+  // padding: 20px;
+  .bubble {
+    background: lighten($dark, 23%);
+  }
+}
+
+// .typing {
+//   position: absolute;
+//   top: 67%;
+//   left: 20px;
+//   .bubble {
+//     background: lighten($dark, 45%);
+//     // padding: 8px 13px 9px 13px;
+//   }
+// }
 
 // .lower {
 //   margin-top: 45px;
 // }
 
 .outgoing {
-  position: absolute;
-  padding: 20px;
+  position: relative;
+  // padding: 20px;
   right: 0;
-  top: 15%;
-  padding: 10px 10px 0 10px;
+  // top: 15%;
+  // padding: 0.2rem;
   border-radius: 0 6px 6px 0;
   max-width: 80%;
   width: auto;
-  float: left;
+  float: right;
   // width: 50%;
   // height: 100%;
   .bubble {
@@ -156,9 +163,9 @@ $dark: #777777;
 }
 
 .bottombar {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 55px;
+  height: 10%;
   bottom: 0;
   background: $white;
   border-radius: 0 0 10px 10px;
@@ -204,6 +211,25 @@ $dark: #777777;
     color: $primary;
   }
 }
+.dots {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: $primary;
+  box-shadow: 0px 7px 0px $primary, 0px 14px 0px $primary;
+}
+.menu {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  width: 10px;
+  height: 20px;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in;
+  }
+}
 
 .backdrop {
   position: fixed;
@@ -217,9 +243,8 @@ $dark: #777777;
 
 .modal {
   position: fixed;
-  top: 10vh;
-  left: 30%;
-  width: 40%;
+  margin: auto;
+  width: 50%;
   // background-color: aqua;
   //padding: 1rem;
   border-radius: 1.5rem;
@@ -321,25 +346,6 @@ $dark: #777777;
 //   font-size: 0.5em;
 //   margin-left: -30px;
 //   margin-top: 2px;
-// }
-// .menu {
-//   position: absolute;
-//   right: 10px;
-//   top: 20px;
-//   width: 10px;
-//   height: 20px;
-//   cursor: pointer;
-//   &:hover {
-//     transform: scale(1.1);
-//     transition: all 0.3s ease-in;
-//   }
-// }
-// .dots {
-//   width: 4px;
-//   height: 4px;
-//   border-radius: 50%;
-//   background-color: $primary;
-//   box-shadow: 0px 7px 0px $primary, 0px 14px 0px $primary;
 // }
 
 // .ellipsis {

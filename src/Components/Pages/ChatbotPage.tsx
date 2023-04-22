@@ -58,7 +58,6 @@ const configuration = new Configuration({
   apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
-const getChats = async (dbRef: DatabaseReference, user: User) => {};
 export const ChatbotPage = (props: any) => {
   const dbRef = ref(database);
   const user = auth.currentUser;
@@ -80,7 +79,6 @@ export const ChatbotPage = (props: any) => {
         console.error(error);
       });
   }, []);
-  console.log(data);
   const getResponse = async (input: string) => {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
@@ -91,7 +89,6 @@ export const ChatbotPage = (props: any) => {
       frequency_penalty: 0,
       presence_penalty: 0,
     });
-    console.log(response);
     return response;
   };
   const handleFormChange = (input: string) => {

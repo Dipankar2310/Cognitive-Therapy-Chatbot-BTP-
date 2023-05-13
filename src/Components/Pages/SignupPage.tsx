@@ -66,10 +66,18 @@ export const SignupPage = (props: any) => {
             email: email.current?.value,
             age: age.current?.value,
             gender: gender.current?.value,
-            chat: [],
+            chat: [
+              {
+                id: 1,
+                key: 1,
+                userInput: "",
+                response: `Hello ${userName.current?.value}, I am morphy, an AI chatbot made to provide mental health support, I'm pleased to see you here, what would you like to talk about today?`,
+              },
+            ],
+            summary: "",
           });
 
-          alert("user created!");
+          alert("Sign In successful, press ok to continue");
           isLoggedIn(true);
           localStorage.setItem("LoggedIn", "true");
           navigate(topPathsArray.homePath, { replace: true });

@@ -56,7 +56,7 @@ export const LoginPage = (props: any) => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          alert("User Logged In!");
+          alert("Log in succesful, press ok to continue");
           isLoggedIn(true);
           localStorage.setItem("LoggedIn", "true");
           navigate(topPathsArray.homePath, { replace: true });
@@ -76,7 +76,7 @@ export const LoginPage = (props: any) => {
         .then(() => {
           // Password reset email sent!
           // ..
-          alert("Password Reset Link Sent to your registered Email!");
+          alert("Password reset link sent to your registered email!");
         })
         .catch((error) => {
           console.log(email?.current?.value);

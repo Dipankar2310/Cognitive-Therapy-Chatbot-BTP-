@@ -1,9 +1,6 @@
-import { TodoPage } from "./Components/Pages/TodoPage";
 import { HomePage } from "./Components/Pages/HomePage";
 import { AuthPage } from "./Components/Pages/AuthPage";
 import { BlogPage } from "./Components/Pages/BlogPage";
-import { ChatbotPage } from "./Components/Pages/ChatbotPage";
-import { useState } from "react";
 import { topPathsArray } from "./Components/constant";
 import {
   BrowserRouter as Router,
@@ -11,15 +8,15 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from "recoil";
-import styles from "./App.module.scss";
-
+import { atom } from "recoil";
+export const numMessages = atom({
+  key: "myMessageCounter",
+  default: 0,
+});
+export const helpNeeded = atom({
+  key: "helpNeededBool",
+  default: false,
+});
 function App() {
   // const [cartIsShown, setCartIsShown] = useState(false);
   // const showCartHandler = () => {
@@ -28,8 +25,9 @@ function App() {
   // const HideCartHandler = () => {
   //   setCartIsShown(false);
   // };
+
   return (
-    <RecoilRoot>
+    <>
       {/* {cartIsShown && (
         <div className={styles.backdrop} onClick={HideCartHandler} />
       )}
@@ -43,7 +41,7 @@ function App() {
         <Route path={topPathsArray.loginPath} element={<AuthPage />} />
         {/* <Navigate to={topPathsArray.homePath} replace={true} /> */}
       </Routes>
-    </RecoilRoot>
+    </>
   );
 }
 

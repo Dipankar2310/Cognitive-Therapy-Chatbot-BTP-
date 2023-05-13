@@ -5,7 +5,7 @@ import AccessIcon from "../images/icon-access-anywhere";
 import IconSecurity from "../images/icon-security";
 import CollabrationIcon from "../images/icon-collaboration";
 import AnyFileIcon from "../images/icon-any-file";
-import StayProdIllustration from "../images/illustration-stay-productive";
+import StayProdIllustration from "../images/OurStoryIllustration.svg";
 import iconArrow from "../images/icon-arrow.svg";
 import bgQuotes from "../images/bg-quotes.png";
 import profile1 from "../images/profile-1.jpg";
@@ -15,12 +15,12 @@ import logo from "../images/logo.svg";
 import iconPhone from "../images/icon-phone.svg";
 import iconLocation from "../images/icon-location.svg";
 import iconEmail from "../images/icon-email.svg";
-import { Link } from "react-router-dom";
+import ChatBotAnimation from "../images/ChatBotAnimation";
+import { Link, useNavigate } from "react-router-dom";
 import { topPathsArray } from "./constant";
 import { useState } from "react";
-
-import { useLocation } from "react-router-dom";
-import { useRecoilState, atom, selector } from "recoil";
+import { numMessages } from "../App";
+import { useRecoilState, atom, selector, useResetRecoilState } from "recoil";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -28,7 +28,6 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 export const LoggedInstate = atom<boolean>({
   key: "LoggedInstate",
   default: localStorage.getItem("LoggedIn") === "true" ? true : false,
@@ -38,12 +37,24 @@ export const MidSection = (props: any) => {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoggedInstate);
   const auth = getAuth();
   const navigate = useNavigate();
+  const resetMessages = useResetRecoilState(numMessages);
   const logOutHandler = () => {
     auth.signOut();
-    alert("user Logged Out!");
+    alert("You have been logged out successfuly, press ok to continue.");
     setIsLoggedIn(false);
     localStorage.setItem("LoggedIn", "false");
+
+    if (props.storeSummary) {
+      props.storeSummary();
+    }
+    resetMessages();
     navigate(topPathsArray.homePath, { replace: true });
+  };
+  const redirectToLogin = () => {
+    alert(
+      "Please create an account or sign in with an existing one to get the best experience"
+    );
+    navigate(topPathsArray.loginPath, { replace: true });
   };
   return (
     <div>
@@ -52,42 +63,50 @@ export const MidSection = (props: any) => {
           <img className={styles.logo} src={logo} alt="" />
 
           <div className={styles.divbtn}>
-            <Link
-              style={{ textDecoration: "none" }}
-              to={topPathsArray.homePath}
-            >
-              <button className={styles.btn1}>Home</button>
-            </Link>
-            <Link
-              style={{ textDecoration: "none" }}
-              to={topPathsArray.blogPath}
-            >
-              <button className={styles.btn1}> Blogs</button>
-            </Link>
-
-            {isLoggedIn ? (
-              <button className={styles.btn1} onClick={logOutHandler}>
-                Log Out
-              </button>
-            ) : (
+            <div className={styles.topbtn}>
               <Link
-                to={topPathsArray.loginPath}
                 style={{ textDecoration: "none" }}
+                to={topPathsArray.homePath}
               >
-                <button className={styles.btn1}>Log In</button>
+                <button className={styles.btn1}>Home</button>
               </Link>
-            )}
+            </div>
+            <div className={styles.topbtn}>
+              <Link
+                style={{ textDecoration: "none" }}
+                to={topPathsArray.blogPath}
+              >
+                <button className={styles.btn1}> Blogs</button>
+              </Link>
+            </div>
+            <div className={styles.topbtn}>
+              {isLoggedIn ? (
+                <button className={styles.btn1} onClick={logOutHandler}>
+                  Log Out
+                </button>
+              ) : (
+                <Link
+                  to={topPathsArray.loginPath}
+                  style={{ textDecoration: "none" }}
+                >
+                  <button className={styles.btn1}>Log In</button>
+                </Link>
+              )}
+            </div>
           </div>
         </header>
         <div className={styles.centered}>
-          <img src={img4} alt="" />
-          Mental Health Support, For Everyone.
+          {/* <img src={img4} alt="" /> */}
+          <ChatBotAnimation />
+          Mental Health Support For Everyone.
           <span>
             Helping users self-manage stressors by blending AI-guided listening
             with professional expert support. Anonymous, Available 24/7,
             Clinically safe.
           </span>
-          <button onClick={props.onShowChat}>Chat with Morphy</button>
+          <button onClick={isLoggedIn ? props.onShowChat : redirectToLogin}>
+            Chat with Morphy
+          </button>
         </div>
       </section>
       <section id={styles.blue}>
@@ -144,9 +163,9 @@ export const MidSection = (props: any) => {
         </article>
         <article className={styles.article2}>
           <div className={styles.block2}>
-            <div className={styles.img}>
-              <StayProdIllustration />
-            </div>
+            {/* <div className={styles.illustration}> */}
+            <img className={styles.img} src={StayProdIllustration} alt="" />
+            {/* </div> */}
           </div>
           <div className={styles.block2}>
             {" "}

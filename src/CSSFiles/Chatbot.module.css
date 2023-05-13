@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caladea:wght@400;700&display=swap");
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;
@@ -18,13 +19,13 @@
 
 .chatbox {
   position: relative;
-  left: 35%;
+  margin-left: auto;
   border-radius: 10px;
-  -webkit-box-shadow: 5px 5px 15px rgba(119, 119, 119, 0.5);
-          box-shadow: 5px 5px 15px rgba(119, 119, 119, 0.5);
-  width: 40vw;
+  -webkit-box-shadow: 5px 5px 15px rgba(50, 41, 55, 0.5);
+          box-shadow: 5px 5px 15px rgba(50, 41, 55, 0.5);
+  width: 90vw;
   height: 80vh;
-  max-height: 80vh;
+  max-width: 500px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -33,20 +34,61 @@
       -ms-flex-direction: column;
           flex-direction: column;
   overflow: hidden;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.modal {
+  position: fixed;
+  border-radius: 1.5rem;
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+  -webkit-animation: slide-down 300ms ease-out forwards;
+          animation: slide-down 300ms ease-out forwards;
 }
 
 .topbar {
+  position: relative;
   width: 100%;
   height: 10%;
-  background: #f9ffff;
+  background: #ffffff;
   border-radius: 10px 10px 0 0;
+}
+
+.middle {
+  position: relative;
+  background: #eae7e7;
+  width: 100%;
+  opacity: 1;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  word-spacing: 0.15ch;
+  line-height: 2.5ch;
+  height: 80%;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  max-height: calc(100% - 60px);
+  overflow: auto;
+}
+
+.bottombar {
+  position: relative;
+  width: 100%;
+  height: 10%;
+  bottom: 0;
+  background: #ffffff;
+  border-radius: 0 0 10px 10px;
 }
 
 .avatar {
   width: 35px;
   height: 35px;
-  background: -webkit-gradient(linear, right top, left bottom, color-stop(20%, #79c7c5), to(#a1e2d9));
-  background: linear-gradient(to bottom left, #79c7c5 20%, #a1e2d9 100%);
+  background: -webkit-gradient(linear, right top, left bottom, color-stop(20%, #4c99bf), to(#b0daff));
+  background: linear-gradient(to bottom left, #4c99bf 20%, #b0daff 100%);
   border-radius: 50%;
   position: absolute;
   top: 11px;
@@ -54,7 +96,7 @@
 }
 
 .avatar p {
-  color: #f9ffff;
+  color: #ffffff;
   margin: 7px 12px;
 }
 
@@ -62,7 +104,7 @@
   position: absolute;
   top: 22px;
   text-transform: uppercase;
-  color: #777777;
+  color: #322937;
   font-size: 0.8em;
   letter-spacing: 2px;
   font-weight: 500;
@@ -71,7 +113,7 @@
 
 .icons {
   position: absolute;
-  color: #a1e2d9;
+  color: #4c99bf;
   padding: 10px;
   top: 5px;
   right: 21px;
@@ -90,30 +132,12 @@
   transition: all 0.3s ease-in;
 }
 
-.middle {
-  position: relative;
-  background: #f9ffff;
-  width: 100%;
-  opacity: 0.9;
-  top: 10%;
-  height: 80%;
-  -webkit-box-flex: 1;
-      -ms-flex: auto;
-          flex: auto;
-  max-height: calc(100% - 60px);
-  overflow: auto;
-  scrollbar-width: none;
-}
-
 .bubble {
   position: relative;
   display: inline-block;
-  color: #f9ffff;
-  font-size: 0.7em;
+  color: #ffffff;
   padding: 10px 10px 10px 12px;
   border-radius: 20px;
-  font-size: 11pt;
-  line-height: 18pt;
 }
 
 .incoming {
@@ -121,7 +145,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 0.2rem;
+  padding: 0.3rem;
   border-radius: 0 6px 6px 0;
   max-width: 80%;
   width: auto;
@@ -129,12 +153,13 @@
 }
 
 .incoming .bubble {
-  background: #b2b2b2;
+  background: #6f5b7a;
 }
 
 .outgoing {
   position: relative;
   right: 0;
+  padding: 0.3rem;
   border-radius: 0 6px 6px 0;
   max-width: 80%;
   width: auto;
@@ -142,17 +167,8 @@
 }
 
 .outgoing .bubble {
-  background: #79c7c5;
+  background: #4c99bf;
   float: right;
-}
-
-.bottombar {
-  position: relative;
-  width: 100%;
-  height: 10%;
-  bottom: 0;
-  background: #f9ffff;
-  border-radius: 0 0 10px 10px;
 }
 
 .left {
@@ -166,28 +182,31 @@
   position: absolute;
   border: 0;
   top: 13px;
-  background: #f9ffff;
-  color: #79c7c5;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 11pt;
+  background: #ffffff;
+  color: #4c99bf;
 }
 
 .chatinput input::-webkit-input-placeholder {
-  color: #a1e2d9;
+  color: #4c99bf;
 }
 
 .chatinput input:-ms-input-placeholder {
-  color: #a1e2d9;
+  color: #4c99bf;
 }
 
 .chatinput input::-ms-input-placeholder {
-  color: #a1e2d9;
+  color: #4c99bf;
 }
 
 .chatinput input::placeholder {
-  color: #a1e2d9;
+  color: #4c99bf;
 }
 
 .chatinput input:focus {
-  color: #777777;
+  color: #322937;
   outline: 0;
 }
 
@@ -195,29 +214,32 @@
   position: absolute;
   border: 0;
   font-size: 1em;
-  color: #a1e2d9;
+  color: #4c99bf;
   top: 19px;
   opacity: 0.8;
   right: 17px;
   cursor: pointer;
   outline: 0;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  background: #ffffff;
 }
 
 .chatinput button:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  color: #79c7c5;
+  -webkit-transform: scale(2);
+          transform: scale(2);
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  color: #4c99bf;
 }
 
 .dots {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: #79c7c5;
-  -webkit-box-shadow: 0px 7px 0px #79c7c5, 0px 14px 0px #79c7c5;
-          box-shadow: 0px 7px 0px #79c7c5, 0px 14px 0px #79c7c5;
+  background-color: #4c99bf;
+  -webkit-box-shadow: 0px 7px 0px #4c99bf, 0px 14px 0px #4c99bf;
+          box-shadow: 0px 7px 0px #4c99bf, 0px 14px 0px #4c99bf;
 }
 
 .menu {
@@ -243,18 +265,6 @@
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.75);
-}
-
-.modal {
-  position: fixed;
-  margin: auto;
-  width: 50%;
-  border-radius: 1.5rem;
-  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  z-index: 30;
-  -webkit-animation: slide-down 300ms ease-out forwards;
-          animation: slide-down 300ms ease-out forwards;
 }
 
 @-webkit-keyframes bounce {

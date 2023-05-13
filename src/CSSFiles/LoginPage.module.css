@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 .wrapper {
   margin: 0 auto;
-  width: 100%;
+  width: 90%;
   max-width: 1140px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -16,7 +16,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-top: 4rem;
 }
 
 .container {
@@ -48,30 +47,8 @@
 }
 
 .login .colright {
-  padding: 60px 30px;
   width: 50%;
   margin-left: -10%;
-}
-
-@media (max-width: 575px) {
-  .login .container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-shadow: none;
-            box-shadow: none;
-  }
-  .login .col-left,
-  .login .col-right {
-    width: 100%;
-    margin: 0;
-    -webkit-clip-path: none;
-            clip-path: none;
-  }
-  .login .colright {
-    padding: 30px;
-  }
 }
 
 .login .logintext {
@@ -199,5 +176,36 @@
   color: #ffffff;
   -webkit-box-shadow: inset 250px 0 0 0 #03adfc;
           box-shadow: inset 250px 0 0 0 #03adfc;
+}
+
+@media (max-width: 575px) {
+  .login .container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .login .colleft {
+    width: 100%;
+    margin: 0;
+    -webkit-clip-path: none;
+            clip-path: none;
+    padding: 0;
+  }
+  .login .colleft .logintext {
+    margin: 1.5em;
+  }
+  .login .colright {
+    width: 80%;
+    margin: 0;
+    -webkit-clip-path: none;
+            clip-path: none;
+    padding: 0;
+  }
+  .login .colright .loginform {
+    margin: 1.5em;
+  }
 }
 /*# sourceMappingURL=LoginPage.module.css.map */

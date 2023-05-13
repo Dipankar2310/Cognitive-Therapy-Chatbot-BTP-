@@ -6,20 +6,22 @@
 
 .wrapper {
   margin: 0 auto;
-  width: 100%;
+  width: 90%;
   max-width: 1140px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 4rem;
+  // margin-top: 4rem;
 }
 
 .container {
   position: relative;
   width: 100%;
   max-width: 600px;
+
   height: auto;
+
   display: flex;
   background: #ffffff;
   box-shadow: 0 0 5px #999999;
@@ -42,25 +44,9 @@
 }
 
 .login .colright {
-  padding: 60px 30px;
+  // padding: 60px 30px;
   width: 50%;
   margin-left: -10%;
-}
-
-@media (max-width: 575px) {
-  .login .container {
-    flex-direction: column;
-    box-shadow: none;
-  }
-  .login .col-left,
-  .login .col-right {
-    width: 100%;
-    margin: 0;
-    clip-path: none;
-  }
-  .login .colright {
-    padding: 30px;
-  }
 }
 
 .login .logintext {
@@ -188,3 +174,32 @@
 //   outline: none;
 //   border: none;
 // }
+@media (max-width: 575px) {
+  .login .container {
+    flex-direction: column;
+    box-shadow: none;
+    // width: 80%;
+  }
+  .login .colleft {
+    width: 100%;
+    margin: 0;
+    clip-path: none;
+    padding: 0;
+
+    .logintext {
+      margin: 1.5em;
+    }
+  }
+  .login .colright {
+    width: 80%;
+    margin: 0;
+    clip-path: none;
+    padding: 0;
+    .loginform {
+      margin: 1.5em;
+    }
+  }
+  // .login .colright {
+  //   padding: 30px;
+  // }
+}

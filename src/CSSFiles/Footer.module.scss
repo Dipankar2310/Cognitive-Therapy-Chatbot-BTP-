@@ -7,7 +7,8 @@ $Blueinsidecall-to-actiongradient: #112b3c;
 $LightRederror: hsl(0, 100%, 63%);
 $White: hsl(0, 0%, 100%);
 $Grad: rgba(255, 0, 0, 0);
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 // body {
 //   margin: 0;
 //   overflow-x: hidden;
@@ -25,56 +26,6 @@ $Grad: rgba(255, 0, 0, 0);
 html {
   box-sizing: border-box;
 }
-
-header {
-  display: flex;
-  justify-content: space-between;
-  // background-image: linear-gradient(
-  //   109.6deg,
-  //   rgba(61, 245, 167, 1) 11.2%,
-  //   rgba(9, 111, 224, 1) 91.1%
-  // );
-  .logo {
-    display: flex;
-    justify-content: flex-start;
-    margin: 0.5rem 2rem;
-    padding-top: 0;
-    width: 20vw;
-    position: relative;
-    min-width: 12rem;
-  }
-  .divbtn {
-    display: flex;
-
-    width: 30vw;
-    justify-content: space-evenly;
-    align-content: center;
-    margin: 1rem;
-
-    .btn1 {
-      display: flex;
-      margin: 2rem 0rem 2rem;
-
-      height: 3vh;
-      letter-spacing: 0.1em;
-      min-width: 50px;
-      justify-content: center;
-      align-content: center;
-      color: $Blueinsidecall-to-actiongradient;
-      font-weight: 500;
-      font-size: clamp(0.7rem, 1.2vw, 1.2rem);
-      background-color: $Grad;
-      outline: none;
-      border: none;
-    }
-
-    button:hover {
-      font-weight: 700;
-      text-decoration: underline;
-    }
-  }
-}
-
 body {
   // max-width: 100vw;
   // background-image: url(../images/wave3.svg);
@@ -89,12 +40,69 @@ body {
   // background-repeat: no-repeat;
   // z-index: 10;
   // margin: 0;
-  font-family: "Raleway", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  // font-family: "Montserrat", sans-serif;
   font-weight: 700;
   color: $Bluefooterbackground;
   background-color: $Grad;
   margin: 0;
 }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  // background-image: linear-gradient(
+  //   109.6deg,
+  //   rgba(61, 245, 167, 1) 11.2%,
+  //   rgba(9, 111, 224, 1) 91.1%
+  // );
+  .logo {
+    display: flex;
+    justify-content: flex-start;
+    margin: 1% 0 0 1%;
+    padding-top: 0;
+    width: 20vw;
+    position: relative;
+    min-width: 10rem;
+  }
+  .divbtn {
+    display: flex;
+
+    width: 40vw;
+    justify-content: space-evenly;
+    // justify-content: flex-start;
+    align-content: center;
+    // margin-top: 2%;
+
+    .btn1 {
+      display: flex;
+      // margin: 2rem 0rem 2rem;
+
+      height: 3vh;
+      letter-spacing: 0.1em;
+      // min-width: 50px;
+      justify-content: center;
+      align-content: center;
+      color: $Blueinsidecall-to-actiongradient;
+      font-weight: 500;
+      font-size: clamp(0.7rem, 1.2vw, 1.2rem);
+      background-color: $Grad;
+      outline: none;
+      border: none;
+    }
+
+    button:hover {
+      font-weight: 700;
+      text-decoration: underline;
+    }
+    .topbtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
 .centered {
   img {
     margin: auto;
@@ -109,6 +117,7 @@ body {
     margin-top: 3rem;
     margin-bottom: 3rem;
     font-family: "Open Sans", sans-serif;
+    // font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 1rem;
     display: flex;
@@ -118,7 +127,7 @@ body {
   }
 
   button {
-    font-family: "Raleway", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-weight: 700;
     font-size: 1rem;
     padding: 1em;
@@ -135,7 +144,8 @@ body {
   button:hover {
     background-color: $Cyaninsidecall-to-actiongradient;
   }
-  font-family: "Raleway", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  // font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 2.25rem;
   max-width: 30ch;
@@ -150,7 +160,8 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   max-width: 60%;
-  margin-left: 10rem;
+  margin: auto;
+  // margin-left: 10rem;
   // margin-top: 5rem;
   row-gap: 1.5rem;
   column-gap: 10rem;
@@ -198,8 +209,8 @@ body {
   background-repeat: no-repeat, no-repeat;
 }
 .article2 {
-  margin-left: 12rem;
-
+  // margin-left: 12rem;
+  margin: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   max-width: 80%;
@@ -207,6 +218,9 @@ body {
   margin-top: 1rem;
   column-gap: 1rem;
   row-gap: 0rem;
+  position: relative;
+  justify-content: center;
+  align-items: center;
   @media (max-width: 720px) {
     display: flex;
     flex-direction: column;
@@ -216,10 +230,11 @@ body {
     max-width: 40ch;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+
     .img {
-      transform: scale(0.8, 0.8);
-      margin: -3rem;
+      margin: 1rem;
+      width: 30vw;
+      min-width: 15em;
     }
 
     p {
@@ -274,7 +289,7 @@ body {
     left: -0.5rem;
   }
   div {
-    max-height: 15rem;
+    height: auto;
 
     background-color: $Bluetestimonialsbackground;
     padding: 1rem;
@@ -325,7 +340,7 @@ body {
   color: $Cyaninsidecall-to-actiongradient;
   background-color: $Yellow;
   border-radius: 0.5rem;
-  margin: 20rem auto -8rem;
+  margin: 12rem auto -8rem;
 
   @media (max-width: 720px) {
     max-width: 90%;
@@ -404,14 +419,19 @@ body {
     input {
       width: 90%;
       border-radius: 25px;
-      border: 2px solid $Blueinsidecall-to-actiongradient;
+      border: 1px solid $Blueinsidecall-to-actiongradient;
       margin: auto;
       height: 2.75rem;
       outline: none;
       margin-bottom: 3rem;
-      font-size: 1.25rem;
+      font-size: 1rem;
       background-color: $Yellow;
       padding: auto;
+      cursor: pointer;
+      box-shadow: inset 0 0 0 0 #03adfc;
+      transition: 0.3s;
+      display: inline-block;
+      padding: 0 20px;
     }
   }
 }
@@ -442,6 +462,7 @@ body {
     flex-direction: row;
     margin-top: 1rem;
     letter-spacing: 0.1em;
+
     img {
       margin: auto;
       margin-right: 1rem;
@@ -512,6 +533,36 @@ aside {
       z-index: 4;
       margin-bottom: -8rem;
       background-color: $Yellow;
+    }
+  }
+}
+@media (max-width: 575px) {
+  header {
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-bottom: 4%;
+  }
+  .centered {
+    span {
+      margin-left: 2%;
+      margin-right: 2%;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+  .article4 {
+    margin-top: 0;
+    padding: 0;
+    p {
+      margin-bottom: 1rem;
+    }
+    .sameline {
+      input {
+        margin-bottom: 1rem;
+      }
+      button {
+        margin-bottom: 1rem;
+      }
     }
   }
 }

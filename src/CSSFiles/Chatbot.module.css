@@ -14,7 +14,6 @@
   position: relative;
   display: inline-block;
   width: 100%;
-  overflow: hidden;
 }
 
 .chatbox {
@@ -33,7 +32,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  overflow: hidden;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -43,7 +41,7 @@
 @media (max-width: 575px) {
   .chatbox {
     border-radius: 0px;
-    height: 96vh;
+    height: 94vh;
     width: 100vw;
   }
 }

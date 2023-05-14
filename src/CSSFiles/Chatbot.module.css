@@ -43,8 +43,10 @@
 @media (max-width: 575px) {
   .chatbox {
     border-radius: 0px;
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
+    top: 55vh;
+    left: 50%;
   }
 }
 

@@ -42,8 +42,10 @@ $dark: #322937; //#777777;
   transform: translate(-50%, -50%);
   @media (max-width: 575px) {
     border-radius: 0px;
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
+    top: 55vh;
+    left: 50%;
   }
 }
 .modal {

@@ -139,14 +139,14 @@ export const SignupPage = (props: any) => {
               <p>
                 {" "}
                 <label>
-                  Password<span>*</span>
+                  Create Password<span>*</span>
                 </label>
                 <input
                   required
                   ref={password}
                   type="password"
                   name="password"
-                  placeholder="Password"
+                  placeholder="Create Password"
                 />
               </p>
               <label>

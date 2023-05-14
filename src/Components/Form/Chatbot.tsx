@@ -35,7 +35,6 @@ const Chatbot = ({
 
   useEffect(() => {
     scrollToBottom();
-    console.log(data);
   }, [data]);
   // const formStyle = { width: "24px", height: "24px" };
   const cell = data ? (
@@ -96,7 +95,9 @@ const Chatbot = ({
           {/* <div className={styles.voldemort}> */}
           {cell}
 
-          <div ref={formRef}></div>
+          <div className={styles.bottomref}>
+            <div className={styles.outgoing} ref={formRef}></div>
+          </div>
           {/* </div> */}
         </div>
         <div className={`${styles.bottombar} ${styles.chatinput}`}>

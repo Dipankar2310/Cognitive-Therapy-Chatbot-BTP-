@@ -42,10 +42,10 @@ $dark: #322937; //#777777;
   transform: translate(-50%, -50%);
   @media (max-width: 575px) {
     border-radius: 0px;
-    height: 90vh;
+    height: 96vh;
     width: 100vw;
-    top: 50vh;
-    left: 50%;
+
+    // left: 50%;
   }
 }
 .modal {
@@ -63,7 +63,10 @@ $dark: #322937; //#777777;
     border-radius: 0px;
   }
 }
-
+.bottomref {
+  position: relative;
+  bottom: 0;
+}
 .topbar {
   position: relative;
   width: 100%;

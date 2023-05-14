@@ -30,16 +30,21 @@ $dark: #322937; //#777777;
   margin-left: auto;
   border-radius: 10px;
   box-shadow: 5px 5px 15px rgba($dark, 0.5);
-  width: 90vw;
+  width: 80vw;
   height: 80vh;
   max-width: 500px;
-  // max-height: 80vh;
+
   display: flex;
   flex-direction: column;
   overflow: hidden;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  @media (max-width: 575px) {
+    border-radius: 0px;
+    height: 100vh;
+    width: 100vw;
+  }
 }
 .modal {
   position: fixed;
@@ -52,6 +57,9 @@ $dark: #322937; //#777777;
   z-index: 30;
 
   animation: slide-down 300ms ease-out forwards;
+  @media (max-width: 575px) {
+    border-radius: 0px;
+  }
 }
 
 .topbar {
@@ -60,6 +68,9 @@ $dark: #322937; //#777777;
   height: 10%;
   background: $white;
   border-radius: 10px 10px 0 0;
+  @media (max-width: 575px) {
+    border-radius: 0px;
+  }
 }
 .middle {
   position: relative;
@@ -90,6 +101,9 @@ $dark: #322937; //#777777;
   bottom: 0;
   background: $white;
   border-radius: 0 0 10px 10px;
+  @media (max-width: 575px) {
+    border-radius: 0px;
+  }
 }
 .avatar {
   width: 35px;
@@ -125,6 +139,7 @@ $dark: #322937; //#777777;
   //margin: 12% auto;
   cursor: pointer;
   .fas {
+    margin-left: 10px;
     padding: 5px;
     opacity: 0.8;
     &:hover {
@@ -132,6 +147,31 @@ $dark: #322937; //#777777;
       transition: all 0.3s ease-in;
     }
   }
+}
+.cross {
+  // position: absolute;
+  // position: relative;
+  color: $secondary;
+  padding: 10px;
+  // margin-left: 20px;
+  // top: 5px;
+  // right: 21px;
+  //margin: 12% auto;
+  padding: 5px;
+  transform: scale(1.5);
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(2);
+    transition: all 0.1s ease-in;
+  }
+}
+.exitbutton {
+  border: 0;
+  outline: 0;
+  position: relative;
+  left: 10px;
+  background: #ffffff;
 }
 
 .bubble {
@@ -242,13 +282,7 @@ $dark: #322937; //#777777;
     color: $primary;
   }
 }
-.dots {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: $primary;
-  box-shadow: 0px 7px 0px $primary, 0px 14px 0px $primary;
-}
+
 .menu {
   position: absolute;
   right: 10px;

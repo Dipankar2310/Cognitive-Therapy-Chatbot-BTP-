@@ -51,9 +51,7 @@ export const MidSection = (props: any) => {
     navigate(topPathsArray.homePath, { replace: true });
   };
   const redirectToLogin = () => {
-    alert(
-      "Please create an account or sign in with an existing one to get the best experience"
-    );
+    alert("Please Sign-In to Chat with Morphy");
     navigate(topPathsArray.loginPath, { replace: true });
   };
   return (
@@ -98,15 +96,15 @@ export const MidSection = (props: any) => {
         <div className={styles.centered}>
           {/* <img src={img4} alt="" /> */}
           <ChatBotAnimation />
-          Mental Health Support For Everyone.
+          <p> Mental Health Support For Everyone.</p>
+          <button onClick={isLoggedIn ? props.onShowChat : redirectToLogin}>
+            Chat with Morphy
+          </button>
           <span>
             Helping users self-manage stressors by blending AI-guided listening
             with professional expert support. Anonymous, Available 24/7,
             Clinically safe.
           </span>
-          <button onClick={isLoggedIn ? props.onShowChat : redirectToLogin}>
-            Chat with Morphy
-          </button>
         </div>
       </section>
       <section id={styles.blue}>

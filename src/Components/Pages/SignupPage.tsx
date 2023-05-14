@@ -71,13 +71,13 @@ export const SignupPage = (props: any) => {
                 id: 1,
                 key: 1,
                 userInput: "",
-                response: `Hello ${userName.current?.value}, I am morphy, an AI chatbot made to provide mental health support, I'm pleased to see you here, what would you like to talk about today?`,
+                response: `Hello ${userName.current?.value}, I am Morphy, an AI chatbot made to provide mental health support, I'm pleased to see you here, what would you like to talk about today?`,
               },
             ],
             summary: "",
           });
 
-          alert("Sign In successful, press ok to continue");
+          alert("Sign In Successful, Press OK to Continue");
           isLoggedIn(true);
           localStorage.setItem("LoggedIn", "true");
           navigate(topPathsArray.homePath, { replace: true });
@@ -93,73 +93,6 @@ export const SignupPage = (props: any) => {
     }
   };
   return (
-    // <div className={styles.LoginBox}>
-    //   <div id={styles.loginbox}>
-    //     <div className={styles.left}>
-    //       <h1 id="status">Register</h1>
-    //   <input
-    //     ref={userName}
-    //     type="text"
-    //     id={styles.username}
-    //     name="username"
-    //     placeholder="Username"
-    //   />
-    //       <input
-    //         ref={email}
-    //         type="text"
-    //         id={styles.email}
-    //         name="email"
-    //         placeholder="E-mail"
-    //       />
-    //       <input
-    //         ref={password}
-    //         type="password"
-    //         id={styles.password}
-    //         name="password"
-    //         placeholder="Password"
-    //       />
-    //   <input
-    //     ref={age}
-    //     type="text"
-    //     id={styles.username}
-    //     name="Age"
-    //     placeholder="Age"
-    //   />
-    //   <select ref={gender}>
-    //     <option>Select gender</option>
-    //     <option value="male">Male</option>
-    //     <option value="female">Female</option>
-    //   </select>
-    //       <input
-    //         type="submit"
-    //         id={styles.login}
-    //         name="Signup"
-    //         value="Sign Up"
-    //         onClick={handleSubmit}
-    //       />
-    //     </div>
-
-    //     <div className={styles.right}>
-    //       <span className={styles.loginwith}>
-    //         Sign in with
-    //         <br />
-    //         social network
-    //       </span>
-
-    //       <button className={`${styles.socialsignin} ${styles.facebook}`}>
-    //         Log in with facebook
-    //       </button>
-    //       <button className={`${styles.socialsignin} ${styles.twitter}`}>
-    //         Log in with Twitter
-    //       </button>
-    //       <button className={`${styles.socialsignin} ${styles.google}`}>
-    //         Log in with Google+
-    //       </button>
-    //     </div>
-    //     <div className={styles.or}>OR</div>
-    //   </div>
-    //   <button onClick={props.handleRegister}>Already have an account?</button>
-    // </div>
     <>
       <div className={`${styles.wrapper} ${styles.login}`}>
         <div className={styles.container}>

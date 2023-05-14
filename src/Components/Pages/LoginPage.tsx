@@ -56,7 +56,7 @@ export const LoginPage = (props: any) => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          alert("Log in succesful, press ok to continue");
+          alert("Log-In Succesful, Press OK to Continue");
           isLoggedIn(true);
           localStorage.setItem("LoggedIn", "true");
           navigate(topPathsArray.homePath, { replace: true });

@@ -7,11 +7,13 @@ import {
   faPhone,
   faVideo,
   faPaperPlane,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 const Chatbot = ({
   onFormChange,
   onFormSubmit,
   onFormClear,
+  onClose,
   data,
 }: PropsForm) => {
   const formRef: any = useRef();
@@ -24,8 +26,8 @@ const Chatbot = ({
     onFormSubmit(userInputRef.current.value);
     userInputRef.current.value = "";
   };
-  const handleClear = () => {
-    onFormClear();
+  const handleClose = () => {
+    onClose();
   };
   const scrollToBottom = () => {
     formRef?.current?.scrollIntoView({ behavior: "smooth" });
@@ -84,9 +86,9 @@ const Chatbot = ({
           <div className={styles.icons}>
             <FontAwesomeIcon icon={faPhone} className={styles.fas} />
             <FontAwesomeIcon icon={faVideo} className={styles.fas} />
-          </div>
-          <div className={styles.menu}>
-            <div className={styles.dots}></div>
+            <button className={styles.exitbutton} onClick={onClose}>
+              <FontAwesomeIcon icon={faTimes} className={` ${styles.cross} `} />
+            </button>
           </div>
         </div>
         {/* top bar finish, Middle starts */}
@@ -159,6 +161,7 @@ export interface Interaction {
 }
 interface PropsForm {
   // userInput: any;
+  onClose: any;
   onFormChange: any;
   onFormSubmit: any;
   onFormClear: any;

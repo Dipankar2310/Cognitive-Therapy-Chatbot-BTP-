@@ -295,6 +295,7 @@ export const ChatbotPage = (props: any) => {
         onFormChange={handleFormChange}
         onFormSubmit={handleFormSubmit}
         onFormClear={handleFormClear}
+        onClose={props.onClose}
         data={userCred.chat}
       ></Chatbot>
 

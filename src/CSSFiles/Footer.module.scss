@@ -125,6 +125,12 @@ header {
     max-width: 55ch;
     line-height: 1.5em;
   }
+  @media (max-width: 575px) {
+    p {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
 
   button {
     font-family: "Open Sans", sans-serif;

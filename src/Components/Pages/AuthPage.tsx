@@ -7,7 +7,7 @@ import styles from "../../CSSFiles/AuthPage.module.scss";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 export const AuthPage = () => {
-  const [isRegistered, setIsRegistered] = useState<boolean>(true);
+  const [isRegistered, setIsRegistered] = useState<boolean>(false);
 
   const showLogin = () => {
     setIsRegistered(true);

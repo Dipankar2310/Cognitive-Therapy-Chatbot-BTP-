@@ -119,12 +119,12 @@ export const ChatbotPage = (props: any) => {
             response: res.data.choices[0].message?.content
               ? res.data.choices[0].message?.content
               : "Tell me more",
-            id: prev.chat[prev.chat.length - 1]?.id
-              ? prev.chat[prev.chat.length - 1].id + 1
-              : 1,
-            key: userCred.chat[prev.chat.length - 1]?.key
-              ? prev.chat[prev.chat.length - 1].key + 1
-              : 1,
+            id: prev.chat[prev.chat.length - 2]?.id
+              ? prev.chat[prev.chat.length - 2].id + 1
+              : 2,
+            key: prev.chat[prev.chat.length - 2]?.key
+              ? prev.chat[prev.chat.length - 2].key + 1
+              : 2,
           },
         ];
         console.log(prev.chat);
@@ -139,12 +139,12 @@ export const ChatbotPage = (props: any) => {
             userInput: userInputVal,
             response:
               "Hey, there seems to be an issue with my server, you can continue talking while the issue gets resolved, but if my responses dont make any sense then please come back later, sorry for the inconvinience",
-            id: prev.chat[prev.chat.length - 1]?.id
-              ? prev.chat[prev.chat.length - 1].id + 1
-              : 1,
-            key: userCred.chat[prev.chat.length - 1]?.key
-              ? prev.chat[prev.chat.length - 1].key + 1
-              : 1,
+            id: prev.chat[prev.chat.length - 2]?.id
+              ? prev.chat[prev.chat.length - 2].id + 1
+              : 2,
+            key: prev.chat[prev.chat.length - 2]?.key
+              ? prev.chat[prev.chat.length - 2].key + 1
+              : 2,
           },
         ];
         console.log(prev.chat);

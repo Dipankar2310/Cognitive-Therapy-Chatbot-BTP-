@@ -77,10 +77,12 @@ export const ChatbotPage = (props: any) => {
   //
   //
   //
-  const defaultString: string = `You are a mental health therapist, talking to ${userCred.username}, who is a ${userCred.age} years old ${userCred.gender}.`;
+
+  const shortResponse: string = `Keep your response short and concise.`;
   const askHelp: string = `The following conversation is between ${userCred.username} and a therapist, should he seek help from a therapist. Strictly answer with Yes or No`;
   const proffesionalHelp: string = `The following conversation is between ${userCred.username} and a therapist, should he seek any proffesional help. Strictly answer with Yes or No`;
   const summarize: string = `Write a summary of the following conversation between a mental health therapist and ${userCred.username}.`;
+  const defaultString: string = `You are a mental health therapist, talking to ${userCred.username}, who is a ${userCred.age} years old ${userCred.gender}.`;
   const getResponseTurbo = async (
     userInputVal: string,
     count: number,
@@ -248,14 +250,14 @@ export const ChatbotPage = (props: any) => {
         3,
         `${defaultString} Continue this conversation and ease
         the user to ask questions and to learn about any
-        problems ${userCred.username} is facing.`
+        problems ${userCred.username} is facing. ${shortResponse}`
       );
     } else if (!helpNeeded) {
       await getResponseTurbo(
         userInputvalue,
         3,
         `${defaultString} Ask probing questions to get a
-        deeper understanding of the problem ${userCred.username} is facing.`
+        deeper understanding of the problem ${userCred.username} is facing. ${shortResponse}`
       );
       const res = await getAdaResponse(userInputvalue, askHelp);
       if (
@@ -266,12 +268,13 @@ export const ChatbotPage = (props: any) => {
       ) {
         setHelpBool(true);
       }
+      const p = await getAdaResponse(userInputvalue, summarize);
     } else {
       await getResponseTurbo(
         userInputvalue,
         3,
         `${defaultString} Above is a small piece of conversation and the summary of the previous conversation is that ${userCred.summary},
-      Suggest to Allen some CBT-based approaches to solve the issue.`
+      Suggest some methods to solve the issue. ${shortResponse}`
       );
     }
     //const res = await query(userInput);

@@ -3,12 +3,11 @@ import Chatbot from "../Form/Chatbot";
 import { Interaction } from "../Form/Chatbot";
 import { initializeApp } from "firebase/app";
 import { numMessages } from "../../App";
-import { helpNeeded } from "../../App";
+import { UserMentalState } from "../../App";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Configuration, OpenAIApi } from "openai";
 import { getDatabase, ref, get, child, update } from "firebase/database";
 import { getAuth } from "firebase/auth";
-import { Await } from "react-router-dom";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBZ1cWkZPj-TpouGYI0t9tWwe8B4yZuGHQ",
@@ -34,7 +33,7 @@ export const ChatbotPage = (props: any) => {
   const dbRef = ref(database);
   const user = auth.currentUser;
   const [msgCount, setCount] = useRecoilState(numMessages);
-  const [helpBool, setHelpBool] = useRecoilState(helpNeeded);
+  const [userMent, setUserMent] = useRecoilState(UserMentalState);
   const [userCred, setUserCred] = useState<UserInfo>({
     age: 18,
     email: "",
@@ -78,11 +77,20 @@ export const ChatbotPage = (props: any) => {
   //
   //
 
-  const shortResponse: string = `Keep your response short and concise.`;
+  const shortResponse: string = `The length of your response should be less than 50 words.`;
+  const defDaVinci: string = `This conversation is between a Therapist and a Patient:`;
+  const checkBeliefs: string = `From this conversation determine if the patient has any negative beliefs. Your response should look like "Yes/No. {negative beliefs}"`;
   const askHelp: string = `The following conversation is between ${userCred.username} and a therapist, should he seek help from a therapist. Strictly answer with Yes or No`;
   const proffesionalHelp: string = `The following conversation is between ${userCred.username} and a therapist, should he seek any proffesional help. Strictly answer with Yes or No`;
   const summarize: string = `Write a summary of the following conversation between a mental health therapist and ${userCred.username}.`;
-  const defaultString: string = `You are a mental health therapist, talking to ${userCred.username}, who is a ${userCred.age} years old ${userCred.gender}.`;
+  const defaultString: string = `You are a mental health therapist providing online therapy to a person named ${userCred.username}, who is a ${userCred.age} years old ${userCred.gender}.`;
+  const shortDefString: string = `You are a mental health therapist, you are giving therapy to a person named ${userCred.username}`;
+  const newUserInstruction: string =
+    defaultString +
+    ` You Greet ${userCred.username}  and be Friendly. If ${userCred.username} is not opening up Find out topics they are open to talk about.`;
+  const oldUserInstruction: string =
+    defaultString +
+    ` You Greet ${userCred.username}  and be like friend who know each other.`;
   const getResponseTurbo = async (
     userInputVal: string,
     count: number,
@@ -90,24 +98,20 @@ export const ChatbotPage = (props: any) => {
   ) => {
     let chat: any = [];
     for (
-      let i = Math.max(userCred.chat.length - count, 0);
+      let i = Math.max(userCred.chat.length - Math.min(count, msgCount), 0);
       i < userCred.chat.length;
       i++
     ) {
       chat.push({ role: "user", content: userCred.chat[i].userInput });
       chat.push({ role: "assistant", content: userCred.chat[i].response });
     }
+    chat.push({ role: "user", content: userInputVal });
     let d: Interaction[] = [];
     // console.log(userCred.chat);
     try {
       const res = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
-        messages: [
-          { role: "system", content: systemRole },
-          ...chat,
-
-          { role: "user", content: userInputVal },
-        ],
+        messages: [{ role: "system", content: systemRole }, ...chat],
       });
       console.log(res);
 
@@ -134,13 +138,21 @@ export const ChatbotPage = (props: any) => {
         return { ...prev, chat: d };
       });
     } catch (error) {
+      const errorResponse = [
+        "Can you find any specific thing that can be done to help you feel better?",
+        "That sounds really difficult. How are you coping?",
+        "I'm really sorry you're going through this. I'm here for you if you need me.",
+        "Let me know what you need. I'll try to help you in any way possible.",
+        "Tell me what you see as your choices here. What are the things that you can do to be in a better situation.",
+        "I understand how you feel.",
+      ];
+      const x = Math.floor(Math.random() * errorResponse.length);
       setUserCred((prev: UserInfo) => {
         d = [
           ...prev.chat.slice(0, -1),
           {
             userInput: userInputVal,
-            response:
-              "Hey, there seems to be an issue with my server, you can continue talking while the issue gets resolved, but if my responses dont make any sense then please come back later, sorry for the inconvinience",
+            response: errorResponse[x],
             id: prev.chat[prev.chat.length - 2]?.id
               ? prev.chat[prev.chat.length - 2].id + 1
               : 2,
@@ -175,14 +187,18 @@ export const ChatbotPage = (props: any) => {
   const getAdaResponse = async (
     userInputVal: string = "",
     instruction: string = summarize,
-    count: number = msgCount
+    count: number = 6
   ) => {
     let chat: any = "";
-    for (let i = 0; i < userCred.chat.length; i++) {
-      chat = chat + `${userCred.username}: ${userCred.chat[i].userInput} \n`;
+    for (
+      let i = Math.max(userCred.chat.length - Math.min(count, msgCount), 0);
+      i < userCred.chat.length;
+      i++
+    ) {
+      chat = chat + `Patient: ${userCred.chat[i].userInput} \n`;
       chat = chat + `Therapist: ${userCred.chat[i].response} \n`;
     }
-    chat = chat + `${userCred.username}: ${userInputVal} \n`;
+    chat = chat + `Patient: ${userInputVal} \n`;
 
     try {
       const response = await openai.createCompletion({
@@ -215,7 +231,45 @@ export const ChatbotPage = (props: any) => {
     }
     // console.log("SummaryStored");
   };
+  //
+  //
+  //DaVinci
+  //
+  //
+  const getDaVinciResponse = async (
+    userInputVal: string = "",
+    count: number = 6
+  ) => {
+    let chat: any = "";
+    for (
+      let i = Math.max(userCred.chat.length - Math.min(count, msgCount), 0);
+      i < userCred.chat.length;
+      i++
+    ) {
+      chat = chat + `Patient: ${userCred.chat[i].userInput} \n`;
+      chat = chat + `Therapist: ${userCred.chat[i].response} \n`;
+    }
+    chat = chat + `Patient: ${userInputVal} \n`;
 
+    try {
+      const response = await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: `${defDaVinci} : \n ${chat} \n ${checkBeliefs}`,
+        // prompt:
+        //   "write a summary of the following conversation between two people:\nRohit: You look bit down. What's the matter?\n\nMahesh: (Sighs) Nothing much.\n\nRohit: Looks like something isn’t right.\n\nMahesh: Ya. It’s at the job front. You know that the telecom industry is going through a rough patch because of falling prices and shrinking margins. These factors along with consolidation in the industry is threatening the stability of our jobs. And even if the job remains, career growth isn’t exciting.\n\nRohit: I know. I’ve been reading about some of these issues about your industry in the newspapers. So have you thought of any plan?\n\nMahesh: I’ve been thinking about it for a while, but haven’t concretized anything so far.\n\n\n\nMahesh is talking about his job front, which is the site of the job and which is facing a number of issues due to falling prices and shrinking margins. He has been thinking about some plan to save the job, but has not yet succeeded.",
+        temperature: 0,
+        max_tokens: 256,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+      });
+
+      return response.data.choices[0].text?.slice(2);
+    } catch (error) {
+      return "";
+    }
+    // console.log("SummaryStored");
+  };
   //
   //
   // HANDLE FUNCTIONS
@@ -238,26 +292,86 @@ export const ChatbotPage = (props: any) => {
         ],
       };
     });
-    if (msgCount < 2) {
+    if (msgCount < 3) {
       await getResponseTurbo(
         userInputvalue,
         3,
-        `${defaultString} Greet ${userCred.username} and have a small talk.`
+        `${
+          userCred.chat.length > 5 ? oldUserInstruction : newUserInstruction
+        } ${shortResponse}`
       );
     } else if (msgCount < 6) {
       await getResponseTurbo(
         userInputvalue,
         3,
-        `${defaultString} Continue this conversation and ease
-        the user to ask questions and to learn about any
-        problems ${userCred.username} is facing. ${shortResponse}`
+        `${defaultString}, You continue this conversation and empathize with the user to know about any problems ${userCred.username} is facing. ${shortResponse}`
       );
-    } else if (!helpNeeded) {
+      const res = await getDaVinciResponse(userInputvalue);
+      if (res?.slice(0, 2) !== "No") {
+        setUserMent((prev) => {
+          return {
+            ...prev,
+            negBelief: res?.slice(4) == undefined ? "" : res?.slice(4),
+          };
+        });
+      }
+    } else if (msgCount < 10 && userMent.negBelief === "") {
       await getResponseTurbo(
         userInputvalue,
         3,
-        `${defaultString} Ask probing questions to get a
-        deeper understanding of the problem ${userCred.username} is facing. ${shortResponse}`
+        `${shortDefString}, play a little trust building excercise with ${userCred.username}.${shortResponse}`
+      );
+    } else if (userMent.negBelief === "") {
+      await getResponseTurbo(
+        userInputvalue,
+        3,
+
+        `${defaultString} You continue the conversation with probing questions in an empathetic manner to get a deeper understanding of the problem ${userCred.username} is facing. ${shortResponse}`
+      );
+      const res = await getDaVinciResponse(userInputvalue);
+      if (res?.slice(0, 2) !== "No") {
+        setUserMent((prev) => {
+          return {
+            ...prev,
+            negBelief: res?.slice(4) == undefined ? "" : res?.slice(4),
+          };
+        });
+      }
+      const p = await getAdaResponse(userInputvalue, summarize);
+    } else if (userMent.negBelief !== "" && msgCount < 20) {
+      if (msgCount < 9) {
+        await getResponseTurbo(
+          userInputvalue,
+          3,
+          `you are a mental health therapist. Give the user small task which they can do while talking to you to feel better. ${shortResponse}`
+        );
+      } else if (msgCount < 12) {
+        await getResponseTurbo(
+          userInputvalue,
+          3,
+          `You are a mental health therapist. The user has ${userMent.negBelief}, You convince the user that having such beliefs can have negative consequences on their life and replace the negative belief with something positive. ${shortResponse}`
+        );
+        const res = await getDaVinciResponse(userInputvalue);
+        if (res?.slice(0, 2) !== "No") {
+          setUserMent((prev) => {
+            return {
+              ...prev,
+              negBelief: res?.slice(4) == undefined ? "" : res?.slice(4),
+            };
+          });
+        }
+      } else if (msgCount < 20) {
+        await getResponseTurbo(
+          userInputvalue,
+          6,
+          `You are a mental health therapist, out of different strategies like, Cognitive restructuring or reframing, Guided discovery, Exposure therapy, Journaling and thought records, Relaxation and stress reduction techniques, You answer as a therapist to the user using one of the techniques. ${shortResponse}`
+        );
+      }
+    } else if (!userMent.helpNeeded) {
+      await getResponseTurbo(
+        userInputvalue,
+        3,
+        `You are a mental health therapist, tell the user ways to cope up about any mental issues the user has. ${shortResponse}`
       );
       const res = await getAdaResponse(userInputvalue, askHelp);
       if (
@@ -266,16 +380,42 @@ export const ChatbotPage = (props: any) => {
         res.length >= 3 &&
         (res[0] + res[1] + res[2]).toLowerCase() == "yes"
       ) {
-        setHelpBool(true);
+        setUserMent((prev) => {
+          return {
+            ...prev,
+            helpNeeded: true,
+          };
+        });
       }
       const p = await getAdaResponse(userInputvalue, summarize);
     } else {
-      await getResponseTurbo(
-        userInputvalue,
-        3,
-        `${defaultString} Above is a small piece of conversation and the summary of the previous conversation is that ${userCred.summary},
-      Suggest some methods to solve the issue. ${shortResponse}`
-      );
+      if (msgCount % 2 == 0)
+        await getResponseTurbo(
+          userInputvalue,
+          3,
+          `You are a mental health therapist, suggest them that they shou;d seek proffesional help, meanwhile also suggest methods to cope with the situation. The length of your response should be less than 60 words. ${shortResponse}`
+        );
+      else {
+        await getResponseTurbo(
+          userInputvalue,
+          3,
+          `you are a mental health therapist. Give the user small task which they can do while talking to you to feel better. ${shortResponse}`
+        );
+      }
+      const res = await getAdaResponse(userInputvalue, askHelp);
+      if (
+        res &&
+        res.length > 0 &&
+        res.length >= 3 &&
+        (res[0] + res[1] + res[2]).toLowerCase() == "yes"
+      ) {
+        setUserMent((prev) => {
+          return {
+            ...prev,
+            helpNeeded: true,
+          };
+        });
+      }
     }
     //const res = await query(userInput);
   };
@@ -315,4 +455,8 @@ interface UserInfo {
   summary: string;
   username: string;
   chat: Interaction[];
+}
+export interface UserMentality {
+  helpNeeded: Boolean;
+  negBelief: string;
 }

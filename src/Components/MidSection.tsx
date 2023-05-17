@@ -236,57 +236,63 @@ export const MidSection = (props: any) => {
             </span>
           </div>
         </article>
-
-        <article className={styles.article4}>
-          <div>
-            <span> Get early access today</span>
-            <br />
-            <p>
-              It only takes a minute to sign up and our free starter tier is
-              extremely generous. If you have any questions, our support team
-              would be happy to help you.
-            </p>
-            <div className={styles.sameline}>
-              <input type="email" placeholder="Your email or mobile no." />
-              <button> Get Started For Free</button>
+        <article className={styles.article4wrapper}>
+          <article className={styles.article4}>
+            <div>
+              <span> Get early access today</span>
+              <br />
+              <p>
+                It only takes a minute to sign up and our free starter tier is
+                extremely generous. If you have any questions, our support team
+                would be happy to help you.
+              </p>
+              <div className={styles.sameline}>
+                <input type="email" placeholder="Your email or mobile no." />
+                <button> Get Started For Free</button>
+              </div>
             </div>
-          </div>
+          </article>
         </article>
       </section>
       <section id={styles.blue}>
         <article className={styles.article5}>
-          <img className={styles.logo} src={logo} alt="" />
-          <div className={styles.box1}>
-            <img src={iconLocation} alt="" />
-            <p>Indian Institute of Technology, Roorkee.</p>
+          <div className={styles.logo}>
+            <img src={logo} id={styles.reallogo} alt="" />
+            {/* <span className={styles.location}>
+              <img src={iconLocation} alt="" />
+              <p>Indian Institute of Technology, Roorkee.</p>
+            </span> */}
           </div>
 
-          <div className={styles.box2}>
-            <img src={iconPhone} alt="" />
-            <p> 9625604627 </p>
+          {/* <div className={styles.box2}>
+            <span className={styles.highlighted}> Contact Us</span>
+            <span>
+              <img src={iconPhone} alt="" />
+              <p> 9625604627 </p>
+            </span>
+            <span>
+              <img src={iconEmail} alt="" />
+              <p> morphy@gmail.com</p>
+            </span>
+          </div> */}
 
-            <img src={iconEmail} alt="" />
-            <p> morphy@gmail.com</p>
-          </div>
-
-          <div className={styles.box3}>
-            <p>About Us</p>
+          {/* <div className={styles.box1}> */}
+          <div>
+            <span> Resources</span>
+            <p>About</p>
             <p>Jobs </p>
-            <p>Press </p>
+            <p>Privacy </p>
             <p> Blog</p>
           </div>
 
-          <div className={styles.box4}>
-            <p> Contact Us</p>
+          <div>
+            <span> Navigation</span>
+            <p> Service</p>
             <p>Terms</p>
-            <p>Privacy</p>
+            <p>Menu</p>
+            <p>News Update</p>
           </div>
-          <div className={styles.box6}>
-            <a href="#facebook" className={styles.facebook}>
-              {" "}
-              <i className="fa fa-facebook"></i>
-            </a>
-          </div>
+          {/* </div> */}
         </article>
       </section>
     </div>

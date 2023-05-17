@@ -8,14 +8,15 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import { UserMentality } from "./Components/Pages/ChatbotPage";
 import { atom } from "recoil";
 export const numMessages = atom({
   key: "myMessageCounter",
   default: 0,
 });
-export const helpNeeded = atom({
+export const UserMentalState = atom<UserMentality>({
   key: "helpNeededBool",
-  default: false,
+  default: { helpNeeded: false, negBelief: "" },
 });
 function App() {
   // const [cartIsShown, setCartIsShown] = useState(false);

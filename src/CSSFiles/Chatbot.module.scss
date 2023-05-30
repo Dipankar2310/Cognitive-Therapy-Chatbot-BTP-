@@ -120,7 +120,7 @@ $dark: #322937; //#777777;
   left: 15px;
   p {
     color: $white;
-    margin: 7px 12px;
+    margin: 7px 10px;
   }
 }
 
@@ -183,8 +183,7 @@ $dark: #322937; //#777777;
   position: relative;
   display: inline-block;
   // margin-bottom: 5px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 5px 20px;
   color: $white;
 
   padding: 10px 10px 10px 12px;
@@ -199,7 +198,7 @@ $dark: #322937; //#777777;
   // width: 50%;
   // height: 100%;
   display: flex;
-
+  flex-direction: column;
   padding: 0.3rem;
   border-radius: 0 6px 6px 0;
   max-width: 80%;

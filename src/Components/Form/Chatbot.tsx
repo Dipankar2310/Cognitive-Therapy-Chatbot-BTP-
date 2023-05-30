@@ -54,10 +54,16 @@ const Chatbot = ({
           {item?.response?.length && item?.response?.length > 0 ? (
             <article className={styles.msgContainer}>
               <div className={styles.incoming}>
-                <div className={`${styles.bubble} `}>{item.response}</div>
+                {item.response.split(/(\?|\.)/).map((segment, index) =>
+                  segment.length > 1 ? (
+                    <div key={index} className={styles.bubble}>
+                      {segment}
+                    </div>
+                  ) : null
+                )}
               </div>
             </article>
-          ) : data.indexOf(item) == data.length - 1 ? (
+          ) : data.indexOf(item) === data.length - 1 ? (
             <article className={styles.msgContainer}>
               <div className={styles.typing}>
                 <div className={styles.bubble}>

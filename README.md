@@ -1,1 +1,1 @@
-### run ```npm install --force``` and then run ```npm start``` to start the development server.
+### run ```npm install``` to install all the dependencies and then run ```npm start``` to start the development server.

@@ -3,23 +3,29 @@ import { useState } from "react";
 import axios from 'axios'
 import styles from "../../CSSFiles/BlogPage.module.scss";
 
-export const BlogPage = () => {
+export const BlogPage = (props: any) => {
   const [blogs, setBlogs] = useState<{ title: string; description: string; }[]>([]);
+  const [helpTextValue, setHelpTextValue] = useState<string>("mental illness");
 
   const getBlogs = async() => {
-    const res = await axios.get('http://localhost:8080/');
+    const res = await axios.get('http://localhost:8080/', {
+      params: {
+        searchText: helpTextValue,
+      }
+    });
     return res.data.result
   };
 
   useEffect(() => {
-    console.log(blogs);
-  }, [blogs])
+    setHelpTextValue(props.helpText)
+  }, [])
 
   useEffect(() => {
+    console.log('the helpText in BlogPage is: ', props.helpText)
     getBlogs().then((response) => {
       setBlogs(response)
     })
-  }, [])
+  }, [helpTextValue])
 
   return(
     <>

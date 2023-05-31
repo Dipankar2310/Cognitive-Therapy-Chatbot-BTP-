@@ -10,8 +10,10 @@ const axios = require("axios");
 app.use(cors());
 
 app.get("/", async (req, res) => {
+  let searchText = req.query.searchText
+  console.log(searchText);
     newsapi.v2.everything({
-        q: "mental health",
+        q: searchText,
         language: 'en',
         pageSize: 5,
       }).then(response => {

@@ -8,6 +8,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { Configuration, OpenAIApi } from "openai";
 import { getDatabase, ref, get, child, update } from "firebase/database";
 import { getAuth } from "firebase/auth";
+import { useRef } from "react";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBZ1cWkZPj-TpouGYI0t9tWwe8B4yZuGHQ",
@@ -34,11 +35,16 @@ export const ChatbotPage = (props: any) => {
   const user = auth.currentUser;
 
   const [helpText, setHelpText] = useState<string>("mental illness");
+  const helpTextRef = useRef<string>("mental illness");
 
   useEffect(() => {
-    console.log('the helpText in ChatbotPage is: ', helpText);
-    props.onHelpTextChange(helpText);
+    if(helpText != "mental illness"){
+      helpTextRef.current = helpText
+    }
+    console.log('the helpText in ChatbotPage is: ', helpTextRef.current);
+    props.onHelpTextChange(helpTextRef.current);
   }, [helpText])
+
 
   const [msgCount, setCount] = useRecoilState(numMessages);
   const [userMent, setUserMent] = useRecoilState(UserMentalState);

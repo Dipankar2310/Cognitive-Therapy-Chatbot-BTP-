@@ -4,8 +4,6 @@ const app = express();
 
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('d166f64f56db4657a9c479c024d7fb12');
-// To query /v2/top-headlines
-// All options passed to topHeadlines are optional, but you need to include at least one of them
 
 const axios = require("axios");
 

@@ -25,7 +25,7 @@ const database = getDatabase(app);
 const auth = getAuth();
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 

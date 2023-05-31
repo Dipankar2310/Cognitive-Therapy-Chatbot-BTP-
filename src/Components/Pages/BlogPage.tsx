@@ -23,7 +23,10 @@ export const BlogPage = () => {
 
   return(
     <>
-      <div className="blogs">
+      <div className={styles.blogs}>
+        <div className={styles.blogstitle}>
+          Recommanded Blogs
+        </div>
       {blogs.map((blog, index) => (
           <div key={index} className={styles.blogcard}>
             <div className={styles.title}>{blog.title}</div>

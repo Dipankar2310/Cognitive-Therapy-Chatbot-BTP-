@@ -12,12 +12,9 @@ $Grad: rgba(255, 0, 0, 0);
 
 .blogs {
     background-image: radial-gradient( circle farthest-corner at 92.3% 71.5%,  rgba(83,138,214,1) 0%, rgba(134,231,214,1) 90% );
-
-
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 12px;
-    margin-right: -40px;
   }
   .blogs::after {
     content: "";
@@ -32,10 +29,11 @@ $Grad: rgba(255, 0, 0, 0);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s, box-shadow 0.3s;
     overflow: hidden;
-   text-decoration: none;
-   display: flex;
-  flex-direction: column;
-  align-items: center;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    align-items: center;
   }
   .blogcard:hover {
     transform: scale(1.05);

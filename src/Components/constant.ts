@@ -1,5 +1,5 @@
 export const topPathsArray = {
   homePath: "/",
-  blogPath: "/Blog",
-  loginPath: "/Login",
+  blogPath: "/blog",
+  loginPath: "/login",
 };

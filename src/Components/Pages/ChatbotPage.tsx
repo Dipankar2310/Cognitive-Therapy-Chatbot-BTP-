@@ -63,13 +63,14 @@ export const ChatbotPage = (props: any) => {
       .then((snapshot) => {
         if (snapshot.exists()) {
           const res = snapshot.val();
+          setHelpText(res.userhelptype);
           setUserCred({
             age: res.age,
             email: res.email,
             gender: res.gender,
             summary: res.summary ? res.summary : "",
             username: res.username,
-            userhelptype: helpText,
+            userhelptype: res.userhelptype,
             chat: res.chat ? res.chat : [],
           });
         } else {
@@ -93,11 +94,11 @@ export const ChatbotPage = (props: any) => {
   //
 
 useEffect(() => {
-  if(user?.uid === undefined){
+  if(user?.uid === undefined || helpText === "mental illness"){
     return () => {}
   }
   update(ref(database, "users/" + user?.uid), {
-      userhelptype: helpTextRef.current,
+      userhelptype: helpText,
     });
 }, [userCred])
 

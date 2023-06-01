@@ -11,14 +11,14 @@ import { getAuth } from "firebase/auth";
 import { useRef } from "react";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBZ1cWkZPj-TpouGYI0t9tWwe8B4yZuGHQ",
-  authDomain: "lbp-auth.firebaseapp.com",
-  databaseURL: "https://lbp-auth-default-rtdb.firebaseio.com",
-  projectId: "lbp-auth",
-  storageBucket: "lbp-auth.appspot.com",
-  messagingSenderId: "901285538050",
-  appId: "1:901285538050:web:10e00ae35c6dd624933a1b",
-  measurementId: "G-6VVKL2TYBJ",
+  apiKey: "AIzaSyAzqB8sbcmuDBo6eMsmjWY84RIAQ_3s6sA",
+  authDomain: "healthgpt-1a9b2.firebaseapp.com",
+  databaseURL: "https://healthgpt-1a9b2-default-rtdb.firebaseio.com",
+  projectId: "healthgpt-1a9b2",
+  storageBucket: "healthgpt-1a9b2.appspot.com",
+  messagingSenderId: "431429000193",
+  appId: "1:431429000193:web:799ed9852f1fbed9eaf400",
+  measurementId: "G-E7Z9SS8BD2"
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

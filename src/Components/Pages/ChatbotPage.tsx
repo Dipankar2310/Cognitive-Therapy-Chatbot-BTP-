@@ -329,12 +329,7 @@ export const ChatbotPage = (props: any) => {
   //
   const handleFormSubmit = async (userInputvalue: any) => {
     // setUserInput(userInputvalue);
-    await getHelpType(
-      userInputvalue,
-      `${
-        oldUserInstruction
-      } ${shortResponse}`
-    );
+    
     setUserCred((prev: UserInfo) => {
       return {
         ...prev,
@@ -349,6 +344,12 @@ export const ChatbotPage = (props: any) => {
         ],
       };
     });
+    await getHelpType(
+      userInputvalue,
+      `${
+        oldUserInstruction
+      } ${shortResponse}`
+    );
     if (msgCount < 3) {
       await getResponseTurbo(
         userInputvalue,
@@ -485,6 +486,7 @@ export const ChatbotPage = (props: any) => {
     });
     props.onClose();
   };
+  
 
   return (
     // <Modal>

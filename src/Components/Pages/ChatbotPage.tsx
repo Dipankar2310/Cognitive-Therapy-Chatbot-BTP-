@@ -222,7 +222,7 @@ export const ChatbotPage = (props: any) => {
       });
       // console.log('help type: ', res.data.choices[0].message?.content);
       const temp = res.data.choices[0].message?.content;
-      setHelpText(temp);
+      setHelpText(temp || "mental illness");
     } catch (error) {
       // console.log('help type: ', 'stress');
       setHelpText('mental illness');

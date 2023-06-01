@@ -93,6 +93,9 @@ export const ChatbotPage = (props: any) => {
   //
 
 useEffect(() => {
+  if(user?.uid === undefined){
+    return () => {}
+  }
   update(ref(database, "users/" + user?.uid), {
       userhelptype: helpTextRef.current,
     });

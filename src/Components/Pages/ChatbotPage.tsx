@@ -54,6 +54,7 @@ export const ChatbotPage = (props: any) => {
     gender: "Male",
     summary: "",
     username: "User",
+    userhelptype: helpText,
     chat: [],
   });
 
@@ -62,13 +63,13 @@ export const ChatbotPage = (props: any) => {
       .then((snapshot) => {
         if (snapshot.exists()) {
           const res = snapshot.val();
-
           setUserCred({
             age: res.age,
             email: res.email,
             gender: res.gender,
             summary: res.summary ? res.summary : "",
             username: res.username,
+            userhelptype: helpText,
             chat: res.chat ? res.chat : [],
           });
         } else {
@@ -90,6 +91,13 @@ export const ChatbotPage = (props: any) => {
   //
   //
   //
+
+useEffect(() => {
+  update(ref(database, "users/" + user?.uid), {
+      userhelptype: helpTextRef.current,
+    });
+}, [userCred])
+
 
   const shortResponse: string = `The length of your response should be less than 50 words.`;
   const defDaVinci: string = `This conversation is between a Therapist and a Patient:`;
@@ -149,7 +157,7 @@ export const ChatbotPage = (props: any) => {
         ];
         // console.log(prev.chat);
         // console.log(d);
-        return { ...prev, chat: d };
+        return { ...prev, chat: d , userhelptype: helpText};
       });
     } catch (error) {
       const errorResponse = [
@@ -182,6 +190,7 @@ export const ChatbotPage = (props: any) => {
     }
     await update(ref(database, "users/" + user?.uid), {
       chat: d,
+      userhelptype: helpText,
     });
 
     // console.log(res);
@@ -329,7 +338,13 @@ export const ChatbotPage = (props: any) => {
   //
   const handleFormSubmit = async (userInputvalue: any) => {
     // setUserInput(userInputvalue);
-    
+    await getHelpType(
+      userInputvalue,
+      `${
+        oldUserInstruction
+      } ${shortResponse}`
+    );
+
     setUserCred((prev: UserInfo) => {
       return {
         ...prev,
@@ -344,12 +359,7 @@ export const ChatbotPage = (props: any) => {
         ],
       };
     });
-    await getHelpType(
-      userInputvalue,
-      `${
-        oldUserInstruction
-      } ${shortResponse}`
-    );
+    
     if (msgCount < 3) {
       await getResponseTurbo(
         userInputvalue,
@@ -513,6 +523,7 @@ interface UserInfo {
   gender: string;
   summary: string;
   username: string;
+  userhelptype: string;
   chat: Interaction[];
 }
 export interface UserMentality {

@@ -3,9 +3,11 @@ import { useState } from "react";
 import { useRef } from "react";
 import axios from 'axios'
 import styles from "../../CSSFiles/BlogPage.module.scss";
+import { HiOutlineExternalLink } from 'react-icons/hi';
+
 
 export const BlogPage = (props: any) => {
-  const [blogs, setBlogs] = useState<{ title: string; description: string; }[]>([]);
+  const [blogs, setBlogs] = useState<{urlToImage:string;  title: string; description: string; author:string; url:string; }[]>([]);
   const [helpTextValue, setHelpTextValue] = useState<string>("mental health");
 
   const getBlogs = async(searchValue: any) => {
@@ -31,17 +33,21 @@ export const BlogPage = (props: any) => {
 
   return(
     <>
-      <div className={styles.blogs}>
-        <div className={styles.blogstitle}>
-          Recommanded Blogs
-        </div>
-      {blogs.map((blog, index) => (
-          <div key={index} className={styles.blogcard}>
-            <div className={styles.title}>{blog.title}</div>
-            <div>{blog.description}</div>
-          </div>
-        ))}
+  
+  <div className={styles.blogstitle}>Recommended Blogs</div>
+  <div className={styles.blogs}>
+  {blogs.map((blog, index) => (
+    <a key={index} href={blog.url} target="_blank" rel="noopener noreferrer" className={styles.blogcard}>
+      <img src={blog.urlToImage} alt={blog.title} />
+      <div className={styles.title}>{blog.title}</div>
+      <div className={styles.description}>{blog.description}</div>
+      <div className={styles.author}>{blog.author}
+      <HiOutlineExternalLink className={styles.redirectIcon} />
       </div>
+    </a>
+  ))}
+</div>
+
     </>
   )
 };

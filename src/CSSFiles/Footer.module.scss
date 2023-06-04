@@ -632,4 +632,58 @@ aside {
       margin: auto;
     }
   }
+  
+}
+.footer {
+  background-color: $Bluefooterbackground;
+  padding: 20px;
+  color: rgb(222, 228, 228);
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.footerColumn {
+  flex: 1 1 300px;
+  margin-bottom: 20px;
+}
+
+.footerColumn h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footerColumn p {
+  margin: 0;
+}
+
+.socialIcons a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.socialIcons img {
+  width: 30px;
+  height: 30px;
+}
+
+.footerBottom {
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .footerColumn {
+    flex-basis: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerColumn {
+    flex-basis: 100%;
+  }
 }

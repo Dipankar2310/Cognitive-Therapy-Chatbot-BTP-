@@ -12,6 +12,9 @@ import profile1 from "../images/profile-1.jpg";
 import profile2 from "../images/profile-2.jpg";
 import profile3 from "../images/profile-3.jpg";
 import logo from "../images/logo.svg";
+import github from "../images/Github.svg";
+import Instagram from "../images/Instagram.svg";
+import Facebook from "../images/Facebook.svg";
 import iconPhone from "../images/icon-phone.svg";
 import iconLocation from "../images/icon-location.svg";
 import iconEmail from "../images/icon-email.svg";
@@ -236,65 +239,38 @@ export const MidSection = (props: any) => {
             </span>
           </div>
         </article>
-        <article className={styles.article4wrapper}>
-          <article className={styles.article4}>
-            <div>
-              <span> Get early access today</span>
-              <br />
-              <p>
-                It only takes a minute to sign up and our free starter tier is
-                extremely generous. If you have any questions, our support team
-                would be happy to help you.
-              </p>
-              <div className={styles.sameline}>
-                <input type="email" placeholder="Your email or mobile no." />
-                <button> Get Started For Free</button>
-              </div>
-            </div>
-          </article>
-        </article>
+        
       </section>
-      <section id={styles.blue}>
-        <article className={styles.article5}>
-          <div className={styles.logo}>
-            <img src={logo} id={styles.reallogo} alt="" />
-            {/* <span className={styles.location}>
-              <img src={iconLocation} alt="" />
-              <p>Indian Institute of Technology, Roorkee.</p>
-            </span> */}
-          </div>
+      <footer className={styles.footer}>
+  <div className={styles.footerContainer}>
+    <div className={styles.footerColumn}>
+      <h3>About Us</h3>
+      <p>HealthGPT</p>
+      <p>IIT, Roorkee</p>
+    </div>
+  
+    <div className={styles.footerColumn}>
+      <h3>Contact</h3>
+      <p>Phone: 123-456-7890</p>
+      <p>Email: info@example.com</p>
+    </div>
+  
+    <div className={styles.footerColumn}>
+      <h3>Follow Us</h3>
+      <div className={styles.socialIcons}>
+        <a href="#"><img src={github} alt="Facebook" /></a>
+        <a href="#"><img src={Instagram} alt="Twitter" /></a>
+        <a href="#"><img src={Facebook} alt="Instagram" /></a>
+      </div>
+    </div>
+  </div>
+  
+  <div className={styles.footerBottom}>
+    <p>&copy; {new Date().getFullYear()} HealthGPT. All rights reserved.</p>
+  </div>
+</footer>
 
-          {/* <div className={styles.box2}>
-            <span className={styles.highlighted}> Contact Us</span>
-            <span>
-              <img src={iconPhone} alt="" />
-              <p> 9625604627 </p>
-            </span>
-            <span>
-              <img src={iconEmail} alt="" />
-              <p> morphy@gmail.com</p>
-            </span>
-          </div> */}
-
-          {/* <div className={styles.box1}> */}
-          <div>
-            <span> Resources</span>
-            <p>About</p>
-            <p>Jobs </p>
-            <p>Privacy </p>
-            <p> Blog</p>
-          </div>
-
-          <div>
-            <span> Navigation</span>
-            <p> Service</p>
-            <p>Terms</p>
-            <p>Menu</p>
-            <p>News Update</p>
-          </div>
-          {/* </div> */}
-        </article>
-      </section>
     </div>
   );
 };
+

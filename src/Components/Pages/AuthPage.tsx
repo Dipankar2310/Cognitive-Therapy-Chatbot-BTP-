@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { topPathsArray } from "../constant";
 import styles from "../../CSSFiles/AuthPage.module.scss";
 import { Link } from "react-router-dom";
-import logo from "../../images/logo.svg";
+import logo from "../../images/luxlogofinal.svg";
 export const AuthPage = () => {
   const [isRegistered, setIsRegistered] = useState<boolean>(false);
 

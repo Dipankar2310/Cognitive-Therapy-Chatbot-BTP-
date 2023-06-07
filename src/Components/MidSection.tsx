@@ -11,7 +11,7 @@ import bgQuotes from "../images/bg-quotes.png";
 import profile1 from "../images/profile-1.jpg";
 import profile2 from "../images/profile-2.jpg";
 import profile3 from "../images/profile-3.jpg";
-import logo from "../images/logo.svg";
+import logo from "../images/luxlogofinal.svg";
 import github from "../images/Github.svg";
 import Instagram from "../images/Instagram.svg";
 import Facebook from "../images/Facebook.svg";
@@ -54,7 +54,7 @@ export const MidSection = (props: any) => {
     navigate(topPathsArray.homePath, { replace: true });
   };
   const redirectToLogin = () => {
-    alert("Please Sign-In to Chat with Morphy");
+    alert("Please Sign-In to Chat with Lux");
     navigate(topPathsArray.loginPath, { replace: true });
   };
   return (
@@ -101,13 +101,8 @@ export const MidSection = (props: any) => {
           <ChatBotAnimation />
           <p> Mental Health Support For Everyone.</p>
           <button onClick={isLoggedIn ? props.onShowChat : redirectToLogin}>
-            Chat with Morphy
+            Chat with Lux
           </button>
-          <span>
-            Helping users self-manage stressors by blending AI-guided listening
-            with professional expert support. Anonymous, Available 24/7,
-            Clinically safe.
-          </span>
         </div>
       </section>
       <section id={styles.blue}>
@@ -119,8 +114,8 @@ export const MidSection = (props: any) => {
             <span className={styles.bold}> Access anywhere</span>
 
             <p>
-              The ability to use a smartphone, tablet, or computer to access
-              Morphy means you can use it anywhere.
+              The ability to use a smartphone, tablet, or computer to access Lux
+              means you can use it anywhere.
             </p>
           </div>
           <div id={styles.security} className={styles.blocks}>
@@ -173,14 +168,14 @@ export const MidSection = (props: any) => {
             <span>Our Story</span>
             <p>
               In an effort to make the world more mentally resilient, we
-              developed Morphy - an AI chatbot that leverages evidence-based
+              developed Lux - an AI chatbot that leverages evidence-based
               cognitive-behavioral techniques (CBT) to make you feel heard.
-              Blended with professional human support, Morphy provides 24/7
+              Blended with professional human support, Lux provides 24/7
               high-quality mental health support.
             </p>
             <a href="">
               {" "}
-              See how Morphy works <img src={iconArrow} alt="" />
+              See how Lux works <img src={iconArrow} alt="" />
             </a>
           </div>
         </article>
@@ -239,38 +234,43 @@ export const MidSection = (props: any) => {
             </span>
           </div>
         </article>
-        
       </section>
       <footer className={styles.footer}>
-  <div className={styles.footerContainer}>
-    <div className={styles.footerColumn}>
-      <h3>About Us</h3>
-      <p>HealthGPT</p>
-      <p>IIT, Roorkee</p>
-    </div>
-  
-    <div className={styles.footerColumn}>
-      <h3>Contact</h3>
-      <p>Phone: 123-456-7890</p>
-      <p>Email: info@example.com</p>
-    </div>
-  
-    <div className={styles.footerColumn}>
-      <h3>Follow Us</h3>
-      <div className={styles.socialIcons}>
-        <a href="#"><img src={github} alt="Facebook" /></a>
-        <a href="#"><img src={Instagram} alt="Twitter" /></a>
-        <a href="#"><img src={Facebook} alt="Instagram" /></a>
-      </div>
-    </div>
-  </div>
-  
-  <div className={styles.footerBottom}>
-    <p>&copy; {new Date().getFullYear()} HealthGPT. All rights reserved.</p>
-  </div>
-</footer>
+        <div className={styles.footerContainer}>
+          <div className={styles.footerColumn}>
+            <h3>About Us</h3>
+            <p>HealthGPT</p>
+            <p>IIT, Roorkee</p>
+          </div>
 
+          <div className={styles.footerColumn}>
+            <h3>Contact</h3>
+            <p>Phone: +91 1234567890</p>
+            <p>Email: healthgpt@gmail.com</p>
+          </div>
+
+          <div className={styles.footerColumn}>
+            <h3>Follow Us</h3>
+            <div className={styles.socialIcons}>
+              <a href="#">
+                <img src={github} alt="Facebook" />
+              </a>
+              <a href="#">
+                <img src={Instagram} alt="Twitter" />
+              </a>
+              <a href="#">
+                <img src={Facebook} alt="Instagram" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.footerBottom}>
+          <p>
+            &copy; {new Date().getFullYear()} HealthGPT. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
-

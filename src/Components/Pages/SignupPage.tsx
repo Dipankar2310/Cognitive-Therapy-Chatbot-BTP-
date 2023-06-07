@@ -160,7 +160,7 @@ export const SignupPage = (props: any) => {
                 Gender <span>*</span>
               </label>
               <p>
-                <select ref={gender}>
+                <select ref={gender} className={styles.select}>
                   <option>Select gender</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>

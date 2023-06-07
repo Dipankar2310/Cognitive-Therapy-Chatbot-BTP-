@@ -59,11 +59,12 @@ header {
   .logo {
     display: flex;
     justify-content: flex-start;
-    margin: 1% 0 0 1%;
+    margin: 2vh 0 0 2vw;
     padding-top: 0;
-    width: 20vw;
+    width: 10vw;
+    max-width: 10vw;
     position: relative;
-    min-width: 10rem;
+    min-width: 100px;
   }
   .divbtn {
     display: flex;
@@ -73,6 +74,7 @@ header {
     // justify-content: flex-start;
     align-content: center;
     // margin-top: 2%;
+    margin-top: 2vh;
 
     .btn1 {
       display: flex;
@@ -165,10 +167,8 @@ header {
   padding: 5em;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  max-width: 60%;
+  max-width: 75%;
   margin: auto;
-  // margin-left: 10rem;
-  // margin-top: 5rem;
   row-gap: 1.5rem;
   column-gap: 10rem;
   @media (max-width: 720px) {
@@ -186,11 +186,12 @@ header {
   line-height: 1.5em;
 
   p {
-    font-weight: 400;
-    text-align: center;
+    font-weight: 600;
+    text-align: justify;
     font-size: 1rem;
   }
   span {
+    font-weight: 800;
     text-align: center;
   }
 }
@@ -221,7 +222,8 @@ header {
   grid-template-columns: 1fr 1fr;
   max-width: 80%;
 
-  margin-top: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   column-gap: 1rem;
   row-gap: 0rem;
   position: relative;
@@ -231,7 +233,6 @@ header {
     display: flex;
     flex-direction: column;
   }
-
   .block2 {
     max-width: 40ch;
     display: flex;
@@ -244,15 +245,16 @@ header {
     }
 
     p {
-      font-weight: 400;
-      text-align: left;
-      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: justify;
+      font-size: 1rem;
       line-height: 1.5em;
     }
     span {
       line-height: 1.2em;
       text-align: left;
       font-size: 2.25rem;
+      font-weight: 800;
     }
     a {
       color: $Cyaninsidecall-to-actiongradient;
@@ -268,11 +270,13 @@ header {
   grid-column-gap: 2rem;
   // margin-top: 10rem;
   // margin-bottom: 10rem;
-  padding: 10rem 0rem 15rem 0rem;
+  padding: 5rem 0rem 10rem 0rem;
+
   @media (max-width: 720px) {
     display: flex;
     flex-direction: column;
   }
+  height: auto;
   .box1 {
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
@@ -309,9 +313,12 @@ header {
     p {
       font-weight: 400;
       line-height: 1.5em;
-      font-size: 0.9rem;
+      font-size: 1rem;
+      text-align: justify;
     }
     span {
+      text-align: start;
+      font-size: 1rem;
       display: grid;
       grid-template-columns: 20% 70%;
       grid-template-rows: 30% 30%;
@@ -324,7 +331,8 @@ header {
         grid-area: p1;
       }
       .p2 {
-        font-size: 0.6rem;
+        font-size: 0.8rem;
+        text-align: start;
         grid-area: p2;
       }
       .pic {
@@ -333,7 +341,7 @@ header {
     }
   }
   img {
-    width: 2rem;
+    width: 2.5rem;
     border-radius: 100%;
     margin-top: 1rem;
   }
@@ -632,7 +640,6 @@ aside {
       margin: auto;
     }
   }
-  
 }
 .footer {
   background-color: $Bluefooterbackground;
@@ -650,6 +657,8 @@ aside {
 .footerColumn {
   flex: 1 1 300px;
   margin-bottom: 20px;
+  justify-content: center;
+  text-align: center;
 }
 
 .footerColumn h3 {

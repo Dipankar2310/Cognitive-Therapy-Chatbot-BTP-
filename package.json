@@ -24,6 +24,7 @@
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-gender-input": "^1.0.2",
+    "react-icons": "^4.9.0",
     "react-router-dom": "^6.11.2",
     "react-scripts": "^5.0.1",
     "recoil": "^0.7.7",

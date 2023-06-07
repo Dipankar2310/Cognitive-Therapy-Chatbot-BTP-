@@ -23,12 +23,7 @@
   height: auto;
 
   display: flex;
-  background-image: 
-  linear-gradient(
-    109.6deg,
-    rgba(61, 245, 167, 1) 11.2%,
-    rgba(9, 111, 224, 1) 91.1%
-  );
+  background: #ffffff;
   box-shadow: 0 0 5px #999999;
 }
 
@@ -41,6 +36,11 @@
 .login .colleft {
   width: 60%;
   clip-path: polygon(0 0, 0% 100%, 100% 0);
+  background: linear-gradient(
+    109.6deg,
+    rgb(50, 134, 230) 31.2%,
+    rgb(15, 111, 220) 91.1%
+  );
   
 }
 
@@ -239,5 +239,4 @@
   border-right: 6px solid transparent;
   border-top: 6px solid #333;
 }
-
 

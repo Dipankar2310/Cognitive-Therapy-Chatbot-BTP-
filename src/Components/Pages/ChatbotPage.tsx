@@ -34,18 +34,6 @@ export const ChatbotPage = (props: any) => {
   const dbRef = ref(database);
   const user = auth.currentUser;
 
-  const [helpText, setHelpText] = useState<string>("mental illness");
-  const helpTextRef = useRef<string>("mental illness");
-
-  useEffect(() => {
-    if(helpText != "mental illness"){
-      helpTextRef.current = helpText
-    }
-    console.log('the helpText in ChatbotPage is: ', helpTextRef.current);
-    props.onHelpTextChange(helpTextRef.current);
-  }, [helpText])
-
-
   const [msgCount, setCount] = useRecoilState(numMessages);
   const [userMent, setUserMent] = useRecoilState(UserMentalState);
   const [userCred, setUserCred] = useState<UserInfo>({
@@ -99,7 +87,6 @@ export const ChatbotPage = (props: any) => {
   const summarize: string = `Write a summary of the following conversation between a mental health therapist and ${userCred.username}.`;
   const defaultString: string = `You are a mental health therapist providing online therapy to a person named ${userCred.username}, who is a ${userCred.age} years old ${userCred.gender}.`;
   const shortDefString: string = `You are a mental health therapist, you are giving therapy to a person named ${userCred.username}`;
-  const helpType: string = `Based on given input, you have to identify one mental illness type the user is suffering from. types=['anxiety', 'depression', 'ptsd', 'trauma', 'stress', 'schizophrenia', 'personality disorder', 'bipolar disorder', 'autism', 'memory loss']. If user himself is specifying problem, consider that and compare the closest one from 'types'. I can see you're confusing between stress and anxiety, note that if user himself is writing anxiety, you have to tell anxiety as response, if user is typing stress, you should give stress as response, otherwise one closest from the 'types' array. You just have to answer in one word, which one from types the user is suffering from. If there are mutiple, tell anyone without any explanation and your response should be in all lowercase exactly matching one from 'types' array (or closest one) and without any full stop. Don't explaing anything, just give answer in one word the string matching from 'types' array.`;
   const newUserInstruction: string =
     defaultString +
     ` You Greet ${userCred.username}  and be Friendly. If ${userCred.username} is not opening up Find out topics they are open to talk about.`;
@@ -190,43 +177,6 @@ export const ChatbotPage = (props: any) => {
       // console.log(prevCount + 1);
       return prevCount + 1;
     });
-  };
-
-  //
-  //
-  //  TURBO RESPONSE
-  //
-  //
-
-  const getHelpType = async (
-    userInputVal: string,
-    systemRole: string = defaultString
-  ) => {
-    let chat: any = [];
-    for (
-      let i = 0;
-      i < userCred.chat.length;
-      i++
-    ) {
-      chat.push({ role: "user", content: userCred.chat[i].userInput });
-      chat.push({ role: "assistant", content: userCred.chat[i].response });
-    }
-    chat.push({ role: "user", content: userInputVal });
-    chat.push({ role: "system", content: helpType });
-    let d: Interaction[] = [];
-    // console.log(userCred.chat);
-    try {
-      const res = await openai.createChatCompletion({
-        model: "gpt-3.5-turbo",
-        messages: [{ role: "system", content: systemRole }, ...chat],
-      });
-      // console.log('help type: ', res.data.choices[0].message?.content);
-      const temp = res.data.choices[0].message?.content;
-      setHelpText(temp);
-    } catch (error) {
-      // console.log('help type: ', 'stress');
-      setHelpText('mental illness');
-    }
   };
 
   //
@@ -329,12 +279,6 @@ export const ChatbotPage = (props: any) => {
   //
   const handleFormSubmit = async (userInputvalue: any) => {
     // setUserInput(userInputvalue);
-    await getHelpType(
-      userInputvalue,
-      `${
-        oldUserInstruction
-      } ${shortResponse}`
-    );
     setUserCred((prev: UserInfo) => {
       return {
         ...prev,

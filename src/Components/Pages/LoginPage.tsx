@@ -1,3 +1,4 @@
+import axios from "axios";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase, set, ref } from "firebase/database";
@@ -48,44 +49,45 @@ export const LoginPage = (props: any) => {
   const navigate = useNavigate();
   const handleSubmit = (event: any) => {
     if (email.current != null && password.current != null) {
-      signInWithEmailAndPassword(
-        auth,
-        email.current.value,
-        password.current.value
-      )
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          alert("Log-In Succesful, Press OK to Continue");
-          isLoggedIn(true);
-          localStorage.setItem("LoggedIn", "true");
-          navigate(topPathsArray.homePath, { replace: true });
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
+      try {
+        axios
+          .get(
+            `http://localhost:5000/api/v1/auth/login?email  =${email.current}&password=${password.current}`
+          )
+          .then((userCredential) => {
+            const user = userCredential.data.user;
+            alert("Log-In Successful, Press OK to Continue");
+            isLoggedIn(true);
+            localStorage.setItem("LoggedIn", "true");
+            navigate(topPathsArray.homePath, { replace: true });
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
 
-          alert(errorMessage);
-        });
+            alert(errorMessage);
+          });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   const handleForgotPassword = () => {
     if (email.current && email.current.value.length > 0) {
-      sendPasswordResetEmail(auth, email.current.value)
-        .then(() => {
-          // Password reset email sent!
-          // ..
-          alert("Password reset link sent to your registered email!");
-        })
-        .catch((error) => {
-          console.log(email?.current?.value);
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(error.code);
-          alert(errorMessage);
-          // ..
-        });
+      // sendPasswordResetEmail(auth, email.current.value)
+      //   .then(() => {
+      //     // Password reset email sent!
+      //     // ..
+      //     alert("Password reset link sent to your registered email!");
+      //   })
+      //   .catch((error) => {
+      //     console.log(email?.current?.value);
+      //     const errorCode = error.code;
+      //     const errorMessage = error.message;
+      //     console.log(error.code);
+      //     alert(errorMessage);
+      //     // ..
+      //   });
     }
   };
 

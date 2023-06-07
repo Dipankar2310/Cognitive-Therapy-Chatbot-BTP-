@@ -1,4 +1,5 @@
 // Import the functions you need from the SDKs you need
+import axios from "axios";
 import { initializeApp } from "firebase/app";
 import { getDatabase, set, ref } from "firebase/database";
 import { getAnalytics } from "firebase/analytics";
@@ -52,44 +53,33 @@ export const SignupPage = (props: any) => {
       password.current != null &&
       userName.current != null
     ) {
-      createUserWithEmailAndPassword(
-        auth,
-        email.current.value,
-        password.current.value
-      )
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
+      try {
+        axios
+          .post(`http://localhost:5000/api/v1/auth/signup`, [
+            {
+              email: email.current,
+              username: userName.current,
+              password: password.current,
+              age: age.current,
+              gender: gender.current,
+            },
+          ])
+          .then((userCredential) => {
+            const user = userCredential.data.user;
+            alert("Sign Up Successful, Press OK to Continue");
+            isLoggedIn(true);
+            localStorage.setItem("LoggedIn", "true");
+            navigate(topPathsArray.homePath, { replace: true });
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
 
-          set(ref(database, "users/" + user.uid), {
-            username: userName.current?.value,
-            email: email.current?.value,
-            age: age.current?.value,
-            gender: gender.current?.value,
-            chat: [
-              {
-                id: 1,
-                key: 1,
-                userInput: "",
-                response: `Hello ${userName.current?.value}, I am Morphy, an AI chatbot made to provide mental health support, I'm pleased to see you here, what would you like to talk about today?`,
-              },
-            ],
-            summary: "",
+            alert(errorMessage);
           });
-
-          alert("Sign In Successful, Press OK to Continue");
-          isLoggedIn(true);
-          localStorage.setItem("LoggedIn", "true");
-          navigate(topPathsArray.homePath, { replace: true });
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-
-          alert(errorMessage);
-          // ..
-        });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   return (

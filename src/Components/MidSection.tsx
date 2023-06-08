@@ -46,6 +46,8 @@ export const MidSection = (props: any) => {
     alert("You have been logged out successfuly, press ok to continue.");
     setIsLoggedIn(false);
     localStorage.setItem("LoggedIn", "false");
+    localStorage.setItem("UserId", "");
+    localStorage.setItem("AccessToken", "");
 
     if (props.storeSummary) {
       props.storeSummary();

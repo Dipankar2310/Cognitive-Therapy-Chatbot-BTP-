@@ -11,34 +11,6 @@ import { useLocation } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 import { LoggedInstate } from "../MidSection";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  sendPasswordResetEmail,
-  signOut,
-} from "firebase/auth";
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBZ1cWkZPj-TpouGYI0t9tWwe8B4yZuGHQ",
-  authDomain: "lbp-auth.firebaseapp.com",
-  databaseURL: "https://lbp-auth-default-rtdb.firebaseio.com",
-  projectId: "lbp-auth",
-  storageBucket: "lbp-auth.appspot.com",
-  messagingSenderId: "901285538050",
-  appId: "1:901285538050:web:10e00ae35c6dd624933a1b",
-  measurementId: "G-6VVKL2TYBJ",
-};
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-const auth = getAuth();
 
 export const LoginPage = (props: any) => {
   const isLoggedIn = useSetRecoilState(LoggedInstate);
@@ -52,13 +24,22 @@ export const LoginPage = (props: any) => {
       try {
         axios
           .get(
-            `http://localhost:5000/api/v1/auth/login?email  =${email.current}&password=${password.current}`
+            `http://localhost:5000/api/v1/auth/login?email=${email.current.value}&password=${password.current.value}`
           )
           .then((userCredential) => {
-            const user = userCredential.data.user;
+            if (userCredential.data.status === "failure") {
+              alert("Invalid Email/Password");
+              return;
+            }
+            const user = userCredential.data.data.user;
             alert("Log-In Successful, Press OK to Continue");
             isLoggedIn(true);
             localStorage.setItem("LoggedIn", "true");
+            localStorage.setItem(
+              "AccessToken",
+              userCredential.data.data.user.stsTokenManager.accessToken
+            );
+            localStorage.setItem("UserId", userCredential.data.data.user.uid);
             navigate(topPathsArray.homePath, { replace: true });
           })
           .catch((error) => {

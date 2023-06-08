@@ -64,17 +64,34 @@ export const SignupPage = (props: any) => {
               gender: gender.current,
             },
           ])
-          .then((userCredential) => {
-            const user = userCredential.data.user;
-            alert("Sign Up Successful, Press OK to Continue");
-            isLoggedIn(true);
-            localStorage.setItem("LoggedIn", "true");
-            navigate(topPathsArray.homePath, { replace: true });
+          .then(() => {
+            axios
+              .get(
+                `http://localhost:5000/api/v1/auth/login?email=${email.current}&password=${password.current}`
+              )
+              .then((userCredential) => {
+                if (userCredential.data.status === "failure") {
+                  alert("Invalid Email/Password");
+                  return;
+                }
+                const user = userCredential.data.data.user;
+                alert("Log-In Successful, Press OK to Continue");
+                isLoggedIn(true);
+                localStorage.setItem("LoggedIn", "true");
+                localStorage.setItem(
+                  "AccessToken",
+                  userCredential.data.data.user.stsTokenManager.accessToken
+                );
+                localStorage.setItem(
+                  "UserId",
+                  userCredential.data.data.user.uid
+                );
+                navigate(topPathsArray.homePath, { replace: true });
+              });
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-
             alert(errorMessage);
           });
       } catch (error) {

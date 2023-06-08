@@ -1,0 +1,79 @@
+├── .gitignore
+├── .treerc
+├── example.db
+├── package-lock.json
+├── package.json
+├── public
+│  ├── favicon.ico
+│  ├── index.html
+│  ├── manifest.json
+│  └── robots.txt
+├── README.md
+├── server
+│  └── server.js
+├── src
+│  ├── App.tsx
+│  ├── Components
+│  │  ├── constant.ts
+│  │  ├── Form
+│  │  │  └── Chatbot.tsx
+│  │  ├── MidSection.tsx
+│  │  └── Pages
+│  │    ├── AuthPage.tsx
+│  │    ├── BlogPage.tsx
+│  │    ├── ChatbotPage.tsx
+│  │    ├── HomePage.tsx
+│  │    ├── LoginPage.tsx
+│  │    └── SignupPage.tsx
+│  ├── CSSFiles
+│  │  ├── AuthPage.module.scss
+│  │  ├── BlogPage.module.scss
+│  │  ├── card.module.scss
+│  │  ├── Chatbot.module.scss
+│  │  ├── Footer.module.scss
+│  │  ├── Form.module.scss
+│  │  ├── HomePage.module.scss
+│  │  ├── LoginPage.module.scss
+│  │  └── TypingAnimation.module.scss
+│  ├── images
+│  │  ├── bg-curvy-desktop.svg
+│  │  ├── bg-curvy-mobile.svg
+│  │  ├── bg-quotes.png
+│  │  ├── ChatBotAnimation.tsx
+│  │  ├── chatBotTheme.svg
+│  │  ├── Facebook.svg
+│  │  ├── favicon-32x32.png
+│  │  ├── Github.svg
+│  │  ├── icon-access-anywhere.tsx
+│  │  ├── icon-any-file.tsx
+│  │  ├── icon-arrow.svg
+│  │  ├── icon-collaboration.tsx
+│  │  ├── icon-email.svg
+│  │  ├── icon-location.svg
+│  │  ├── icon-phone.svg
+│  │  ├── icon-security.tsx
+│  │  ├── illustration-intro.png
+│  │  ├── illustration-stay-productive.png
+│  │  ├── illustration-stay-productive.svg
+│  │  ├── illustration-stay-productive.tsx
+│  │  ├── img4.png
+│  │  ├── Instagram.svg
+│  │  ├── logo.svg
+│  │  ├── logoFylo.svg
+│  │  ├── luxlogobot.png
+│  │  ├── luxlogofinal.png
+│  │  ├── luxlogofinal.svg
+│  │  ├── OurStoryIllustration.svg
+│  │  ├── profile-1.jpg
+│  │  ├── profile-2.jpg
+│  │  ├── profile-3.jpg
+│  │  ├── wave.svg
+│  │  ├── wave1.svg
+│  │  └── wave3.svg
+│  ├── index.tsx
+│  ├── react-app-env.d.ts
+│  ├── reportWebVitals.ts
+│  ├── setupTests.ts
+│  └── UI
+│    └── TypingAnimation.tsx
+└── tsconfig.json

@@ -19,11 +19,6 @@ export const AuthPage = () => {
     <div className={styles.container}>
       <header>
         <img className={styles.logo} src={logo} alt="" />
-        <div className={styles.divbtn}>
-          <Link style={{ textDecoration: "none" }} to={topPathsArray.homePath}>
-            <button className={styles.btn1}>Return to Home</button>
-          </Link>
-        </div>
       </header>
       {isRegistered ? (
         <LoginPage handleRegister={showSignup} />

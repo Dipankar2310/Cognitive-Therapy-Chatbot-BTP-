@@ -1,121 +1,105 @@
-$Yellow: #faffaf;
-$Bluemainbackground: #252a3e;
-$Bluefooterbackground: #2155cd;
-$Bluetestimonialsbackground: #2155cd;
-$Cyaninsidecall-to-actiongradient: #205375;
-$Blueinsidecall-to-actiongradient: #112b3c;
-$LightRederror: hsl(0, 100%, 63%);
-$White: hsl(0, 0%, 100%);
-$Grad: rgba(255, 0, 0, 0);
-
-
-.container{
-  margin: 0;
+.container {
   font-family: poppins, Arial, Helvetica, sans-serif;
   background-image: url(../images/wave3.svg),
-  linear-gradient(
-    109.6deg,
-    rgba(61, 245, 167, 1) 11.2%,
-    rgba(9, 111, 224, 1) 91.1%
-  );
-background-size: auto auto, 100%;
-background-position: bottom;
-background-repeat: no-repeat, no-repeat;
+    linear-gradient(
+      109.6deg,
+      rgba(61, 245, 167, 1) 11.2%,
+      rgba(9, 111, 224, 1) 91.1%
+    );
+  background-size: auto auto, 100%;
+  background-position: bottom;
+  background-repeat: no-repeat, no-repeat;
+  min-height: 100vh; /* Update to min-height */
+}
+
 .blogs {
-    
-    width: 100%;
-  
-    height: 100vh;
-   
-    height: 100%;
-    
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 12px;
-   
-  }
-  .blogs::after {
-    content: "";
-    width: 20px; /* Adjust the width to match the grid gap */
-  }
-  .blogContainer{
-     margin-left: 15px;
-     margin-right: 15px;
-  }
-  .blogcard {
-    background-image: linear-gradient( 109.6deg,  rgba(223,234,247,1) 11.2%, rgba(244,248,252,1) 91.1% );
-    border: 1px solid #dddddd;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s, box-shadow 0.3s;
-    overflow: hidden;
-   text-decoration: none;
-   display: flex;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 12px;
+  margin-top: 2vh;
+}
+
+.blogs::after {
+  content: "";
+  width: 20px; /* Adjust the width to match the grid gap */
+}
+
+.blogContainer {
+  margin: 0 15px;
+}
+
+.blogcard {
+  background-image: linear-gradient(
+    109.6deg,
+    rgba(223, 234, 247, 1) 11.2%,
+    rgba(244, 248, 252, 1) 91.1%
+  );
+  border: 1px solid #dddddd;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  }
-  .blogcard:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  .title {
-    color: #2d3748;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .description {
-    color: #2d3748;
-    margin-bottom: 10px;
-    
-  }
-  
-  .author {
-    font-style: italic;
-    color: #de2e2e;
-    margin-top: auto;
-  }
-  
-  .blogstitle {
-    
-
-    font-weight: bold;
-    font-size: 2rem;
-    padding: 20px;
-    color: #4c1919;
-    text-align: center;
-  }
-  
-  
-  
-  .blogcard img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 5px;
-  }
-  .blogcard:hover {
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  .blogcard a {
-    text-decoration: none;
-    color: inherit;
-  }
-  .redirectIcon {
-    color: #2155cd; 
-    font-size: 24px; 
-    margin-left: 5rem; 
-    cursor: pointer; 
-    transition: color 0.3s; 
-  }
-  
-  .redirectIcon:hover {
-    color: #112b3c;
-  }
-  
-  
+  margin-bottom: 20px;
 }
-  
+
+.blogcard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  color: #2d3748;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.description {
+  color: #2d3748;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.author {
+  font-style: italic;
+  color: #de2e2e;
+  margin-top: auto;
+}
+
+.blogstitle {
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 20px;
+  color: #4c1919;
+  text-align: center;
+}
+
+.blogcard img {
+  width: 100%;
+  height: 200px; /* Set a fixed height for the images */
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.blogcard a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.redirectIcon {
+  color: #2155cd;
+  font-size: 24px;
+  margin-left: 5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.redirectIcon:hover {
+  color: #112b3c;
+}

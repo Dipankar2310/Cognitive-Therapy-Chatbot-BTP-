@@ -27,10 +27,33 @@ export const BlogPage = (props: any) => {
     }
   };
 
+  const getSymptom = async (userId: any, accessToken: any) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:4000/api/v1/db/symptom?userId=${userId}&accessToken=${accessToken}`
+      );
+      return res.data.data.symptom;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    getBlogs("ptsd", 5).then((response) => {
-      setBlogs(response);
-    });
+    let userId = localStorage.getItem("UserId");
+    let accessToken = localStorage.getItem("AccessToken");
+
+    if (userId) {
+      getSymptom(userId, accessToken).then((response) => {
+        getBlogs(response, 5).then((response) => {
+          setBlogs(response);
+        });
+      });
+    } else {
+      getBlogs("autism", 5).then((response) => {
+        console.log(response);
+        setBlogs(response);
+      });
+    }
   }, []);
 
   return (
@@ -51,7 +74,7 @@ export const BlogPage = (props: any) => {
                 <div className={styles.title}>{blog.title}</div>
                 <div className={styles.description}>{blog.description}</div>
                 <div className={styles.author}>
-                  {blog.author}
+                  {blog.author || "Anonymous"}
                   <HiOutlineExternalLink className={styles.redirectIcon} />
                 </div>
               </a>

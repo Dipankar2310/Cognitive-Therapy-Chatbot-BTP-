@@ -6,11 +6,6 @@ import { useRef } from "react";
 export const HomePage = (props: any) => {
   const [botIsShown, setbotIsShown] = useState(false);
 
-  const handleHelpTextChange = (propss: any) => {
-    console.log("the helpText in HomePage is: ", propss);
-    props.onHelpTextValueChange(propss);
-  };
-
   const showbotHandler = () => {
     setbotIsShown(true);
   };
